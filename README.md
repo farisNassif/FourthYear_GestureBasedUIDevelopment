@@ -9,3 +9,13 @@
 | **Module** |  Gesture Based UI Development |
 | **Author** | [Faris Nassif](https://github.com/farisNassif) & [Alex Cherry](https://github.com/moecherry99) |
 | **Lecturer** | Damien Costello |
+
+
+### Requirements for Cloning
+
+
+* [Kinect SDK](https://www.microsoft.com/en-us/download/details.aspx?id=44561)
+* [Unity 2019.3.0b5](https://unity3d.com/unity/beta/2019.3.0b5) (May still work with some other versions)
+
+### Requirements for Playing
+* Have a kinect
