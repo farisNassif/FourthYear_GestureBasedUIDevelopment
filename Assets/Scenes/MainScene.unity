@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32580c91a2190da4e9938db46c6e36df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTimer: {fileID: 937134751}
 --- !u!1 &937134750
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +402,7 @@ GameObject:
   - component: {fileID: 937134753}
   - component: {fileID: 937134752}
   - component: {fileID: 937134751}
+  - component: {fileID: 937134754}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -469,6 +469,19 @@ RectTransform:
   m_AnchoredPosition: {x: -2, y: 167}
   m_SizeDelta: {x: 49.1, y: 43.6}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &937134754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937134750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db728fb13221084db8aad8cf102e511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownTimer: {fileID: 937134751}
 --- !u!1 &1037061788
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,9 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113db6a98a46b7d419b2e06d4b9aedb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  highScore: 0
-  scoreText: {fileID: 2144795323}
 --- !u!4 &1453340762
 Transform:
   m_ObjectHideFlags: 0
@@ -1269,6 +1279,7 @@ GameObject:
   - component: {fileID: 2144795322}
   - component: {fileID: 2144795324}
   - component: {fileID: 2144795323}
+  - component: {fileID: 2144795325}
   m_Layer: 5
   m_Name: ScoreTracker
   m_TagString: Untagged
@@ -1309,7 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1335,3 +1346,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144795321}
   m_CullTransparentMesh: 0
+--- !u!114 &2144795325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144795321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c03001f0a8d614fafc976390a8a422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  scoreText: {fileID: 2144795323}
