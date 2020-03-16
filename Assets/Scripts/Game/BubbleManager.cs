@@ -5,8 +5,9 @@ using UnityEngine;
 public class BubbleManager : MonoBehaviour
 {
     public GameObject mBubblePrefab;
+    private List<Bubble> GoodBubbles = new List<Bubble>();
+    private List<Bubble> BadBubbles = new List<Bubble>();
 
-    private List<Bubble> mAllBubbles = new List<Bubble>();
     private Vector2 mBottomLeft = Vector2.zero;
     private Vector2 mTopRight = Vector2.zero;
 
@@ -31,7 +32,7 @@ public class BubbleManager : MonoBehaviour
 
     public Vector3 GetPlanePosition()
     {
-        // Random Position
+        /* Random Position */
         float targetX = Random.Range(mBottomLeft.x, mTopRight.x);
         float targetY = Random.Range(mBottomLeft.y, mTopRight.y);
 
@@ -40,20 +41,35 @@ public class BubbleManager : MonoBehaviour
 
     private IEnumerator CreateBubbles()
     {
-        while (mAllBubbles.Count < 100)
+        while (GoodBubbles.Count < 100 && BadBubbles.Count < 100)
         {
-            // Create and add
-            GameObject newBubbleObject = Instantiate(mBubblePrefab, GetPlanePosition(), Quaternion.identity, transform);
-            Bubble newBubble = newBubbleObject.GetComponent<Bubble>();
-            Bubble badBubble = newBubbleObject.GetComponent<Bubble>();
+            /* Generates any number from 0 - 9 */
+            RandomGenerator random = new RandomGenerator(0,10); 
 
-            // Setup bubble
-            newBubble.mBubbleManager = this;
-            mAllBubbles.Add(newBubble);
-            mAllBubbles.Add(badBubble);
+            /* If the number is 3, 4, 5, 6, 7, 8, 9 generate a normal object (70% chance) */
+            if (random.randomNumber > 2) {
+                /* Create and add positively scoring object */
+                GameObject newBubbleObject = Instantiate(mBubblePrefab, GetPlanePosition(), Quaternion.identity, transform);
+                Bubble newBubble = newBubbleObject.GetComponent<Bubble>();
 
-            /* Rate of spawn */
-            yield return new WaitForSeconds(0.3f);
+                /* Setup positive object */
+                newBubble.mBubbleManager = this;
+                GoodBubbles.Add(newBubble);               
+            } 
+
+            /* If the number is 0, 1, or 2 generate a negative object (30% chance) */
+            else 
+            {
+                /* Create and add negatively scoring object */
+                GameObject newBadBubbleObject = Instantiate(mBubblePrefab, GetPlanePosition(), Quaternion.identity, transform);
+                Bubble badBubble = newBadBubbleObject.GetComponent<Bubble>();
+
+                /* Setup negative object */
+                badBubble.mBubbleManager = this;
+                BadBubbles.Add(badBubble); 
+            }
+                /* Rate of spawn */
+                yield return new WaitForSeconds(0.3f);
         }
     }
 }

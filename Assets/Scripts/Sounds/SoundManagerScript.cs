@@ -47,14 +47,14 @@ public class SoundManagerScript : MonoBehaviour
     /* Plays a random Pop */
     public static void PopClip()
     {
-        int randomsound = r.Next(0, 3);
-        Debug.Log(randomsound);
+        /* Generates either 0, 1, 2 */
+        RandomGenerator random = new RandomGenerator(0,3); 
 
-        if (randomsound == 0)
+        if (random.randomNumber == 0)
         {
             AudioSrc.PlayOneShot(Pop1);
         } 
-        else if (randomsound == 1) 
+        else if (random.randomNumber == 1) 
         {
             AudioSrc.PlayOneShot(Pop2);
         } 
