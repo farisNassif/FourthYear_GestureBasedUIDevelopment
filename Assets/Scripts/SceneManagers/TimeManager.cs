@@ -9,6 +9,8 @@ public class TimeManager : MonoBehaviour
 {
     float currentTime = 0f;
     float startingTime = 30f;
+    
+    [HideInInspector]
     public static bool playedMusic = false;
     public static bool playedSound = false;
     public Text countdownTimer; 

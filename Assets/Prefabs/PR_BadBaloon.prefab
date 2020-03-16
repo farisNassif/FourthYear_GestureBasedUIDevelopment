@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 114383331575473740}
   - component: {fileID: 212870082002213654}
   m_Layer: 0
-  m_Name: PR_Bubble
+  m_Name: PR_BadBaloon
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a52426bc19da1d41a20a68134bbab02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mBubbleSprite: {fileID: 21300000, guid: 0ed37f979fb633341baa1e50eea4b789, type: 3}
+  mBubbleSprite: {fileID: 21300000, guid: fa6b84de61a118040b0f6ea5ff430bda, type: 3}
   mPopSprite: {fileID: 21300000, guid: 7f5d45d9834c77d47b570bd4d1e2e39f, type: 3}
   mBubbleManager: {fileID: 0}
 --- !u!212 &212870082002213654
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ed37f979fb633341baa1e50eea4b789, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa6b84de61a118040b0f6ea5ff430bda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

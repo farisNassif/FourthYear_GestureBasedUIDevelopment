@@ -9,6 +9,10 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     /* Variables for keeping track of scores */
     public int score, highScore;
+    /* Score values for collisions */
+    private int goodBaloon = 1;
+    private int badBaloon = 3;
+    private int rareBaloon = 10;
     /* Text display for in game purposes */
     public Text scoreText;
     
@@ -19,13 +23,37 @@ public class ScoreManager : MonoBehaviour
     }
 
     /* Increments current players score */
-    public void AddScore()
+    public void UpdateScore(int CollisionType)
     {
-        score++;
+        UpdateHighScore(); // Check if current score is better than previous high (NOT IMPLEMENTED YET)
 
-        UpdateHighScore();
+        /* If the player collides with a green balooon, execute this */
+        if(CollisionType == 0) 
+        {
+            // Increment Score by 1
+            score = score + goodBaloon; 
+        } 
+        /* If the player collides with a bad balooon, execute this */
+        else if (CollisionType == 1)
+        {
+            // Decrement Score by 3
+            score -= badBaloon; 
+
+            /* Ensuring the score won't ever go below 0 */
+            if (score <= 0)
+            {
+                score = 0;
+            }
+        } 
+        /* If the player collides with a rare balooon, execute this */
+        else 
+        {
+            // Increment Score by 5
+            score += rareBaloon; 
+        }
 
         scoreText.text = "Score: [" + score.ToString() + "]";
+        
         // gameOverScoreText.text = score.ToString();
     }
 

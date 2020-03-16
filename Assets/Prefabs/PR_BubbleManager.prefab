@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mBubblePrefab: {fileID: 1448375104018068, guid: 9acb83655e8aef54c8c2f0a7a53494b6,
     type: 3}
+  mBadBubblePrefab: {fileID: 0}
