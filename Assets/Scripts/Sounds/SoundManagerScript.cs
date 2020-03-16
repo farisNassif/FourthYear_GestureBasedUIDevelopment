@@ -8,15 +8,20 @@ using UnityEngine;
 */
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip CountdownSound, GameMusic;
+    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3;
     static AudioSource AudioSrc;
     private float soundVolume = 1f;
+    public static System.Random r = new System.Random();
 
     /* Start is called before the first frame update */
     void Start()
     {
+        /* All references for the sound files */
         GameMusic = Resources.Load<AudioClip>("GameMusic1");
         CountdownSound = Resources.Load<AudioClip>("Countdown");
+        Pop1 = Resources.Load<AudioClip>("Pop1");
+        Pop2 = Resources.Load<AudioClip>("Pop2");
+        Pop3 = Resources.Load<AudioClip>("Pop3");
 
         AudioSrc = GetComponent<AudioSource> ();
     }
@@ -37,6 +42,26 @@ public class SoundManagerScript : MonoBehaviour
     public static void CountdownClip()
     {
         AudioSrc.PlayOneShot(CountdownSound);
+    }
+
+    /* Plays a random Pop */
+    public static void PopClip()
+    {
+        int randomsound = r.Next(0, 3);
+        Debug.Log(randomsound);
+
+        if (randomsound == 0)
+        {
+            AudioSrc.PlayOneShot(Pop1);
+        } 
+        else if (randomsound == 1) 
+        {
+            AudioSrc.PlayOneShot(Pop2);
+        } 
+        else 
+        {
+            AudioSrc.PlayOneShot(Pop3);
+        }
     }
 
 }

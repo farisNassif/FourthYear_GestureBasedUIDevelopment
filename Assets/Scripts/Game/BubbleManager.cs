@@ -40,17 +40,20 @@ public class BubbleManager : MonoBehaviour
 
     private IEnumerator CreateBubbles()
     {
-        while (mAllBubbles.Count < 20)
+        while (mAllBubbles.Count < 100)
         {
             // Create and add
             GameObject newBubbleObject = Instantiate(mBubblePrefab, GetPlanePosition(), Quaternion.identity, transform);
             Bubble newBubble = newBubbleObject.GetComponent<Bubble>();
+            Bubble badBubble = newBubbleObject.GetComponent<Bubble>();
 
             // Setup bubble
             newBubble.mBubbleManager = this;
             mAllBubbles.Add(newBubble);
+            mAllBubbles.Add(badBubble);
 
-            yield return new WaitForSeconds(0.5f);
+            /* Rate of spawn */
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }

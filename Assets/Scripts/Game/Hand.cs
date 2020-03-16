@@ -16,7 +16,9 @@ public class Hand : MonoBehaviour
         if (!collision.gameObject.CompareTag("Bubble"))
             return;
 
-        ScoreManager.instance.AddScore();
+        ScoreManager.instance.AddScore(); // Deal with score
+        SoundManagerScript.PopClip(); // Deal with pop sound
+
         Bubble bubble = collision.gameObject.GetComponent<Bubble>();
         StartCoroutine(bubble.Pop());
     }
