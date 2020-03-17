@@ -20,7 +20,12 @@
 ### Requirements for Playing
 * Have a kinect
 
+### Project Implementation
+Our submission consists 
 
+<p align="center">
+  <img src = "https://i.imgur.com/gwd34ud.mp4">
+</p>
 
 ### Refs and readme images - TODO
 Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth [pg 245]
