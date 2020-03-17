@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
 
+/* Script that is attatched to BodyView that handles all kinect data */
 public class BodySourceView : MonoBehaviour
 {
+    /* BodySourceManager script is required */
     public BodySourceManager mBodySourceManager;
+    /* Joint object to track, in this case track hands */
     public GameObject mJointObject;
 
+    [HideInInspector]
     private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
     private List<JointType> _joints = new List<JointType>
     {
@@ -41,10 +45,10 @@ public class BodySourceView : MonoBehaviour
         {
             if (!trackedIds.Contains(trackingId))
             {
-                // Destroy body object
+                /* Destroy body object */
                 Destroy(mBodies[trackingId]);
 
-                // Remove from list
+                /* Remove from list */
                 mBodies.Remove(trackingId);
             }
         }
@@ -53,17 +57,17 @@ public class BodySourceView : MonoBehaviour
         #region Create Kinect bodies
         foreach (var body in data)
         {
-            // If no body, skip
+            /* If no body, skip */
             if (body == null)
                 continue;
 
             if (body.IsTracked)
             {
-                // If body isn't tracked, create body
+                /* If body isn't tracked, create body */
                 if (!mBodies.ContainsKey(body.TrackingId))
                     mBodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
 
-                // Update positions
+                /* Update positions */
                 UpdateBodyObject(body, mBodies[body.TrackingId]);
             }
         }
@@ -72,17 +76,17 @@ public class BodySourceView : MonoBehaviour
 
     private GameObject CreateBodyObject(ulong id)
     {
-        // Create body parent
+        /* Create body parent */
         GameObject body = new GameObject("Body:" + id);
 
-        // Create joints
+        /* Create joints */
         foreach (JointType joint in _joints)
         {
-            // Create Object
+            /* Create Object */
             GameObject newJoint = Instantiate(mJointObject);
             newJoint.name = joint.ToString();
 
-            // Parent to body
+            /* Parent to body */
             newJoint.transform.parent = body.transform;
         }
 
@@ -91,15 +95,15 @@ public class BodySourceView : MonoBehaviour
 
     private void UpdateBodyObject(Body body, GameObject bodyObject)
     {
-        // Update joints
+        /* Update joints */
         foreach (JointType _joint in _joints)
         {
-            // Get new target position
+            /* Get new target position */
             Joint sourceJoint = body.Joints[_joint];
             Vector3 targetPosition = GetVector3FromJoint(sourceJoint);
             targetPosition.z = 0;
 
-            // Get joint, set new position
+            /* Get joint, set new position */
             Transform jointObject = bodyObject.transform.Find(_joint.ToString());
             jointObject.position = targetPosition;
         }

@@ -4,15 +4,16 @@ using Windows.Kinect;
 
 public class BodySourceManager : MonoBehaviour
 {
+    /* Kinect sensor object to turn on/off and read from */
     private KinectSensor _Sensor;
     private BodyFrameReader _Reader;
     private Body[] _Data = null;
-
     public Body[] GetData()
     {
         return _Data;
     }
 
+    /* On start open the sensor and prepare to read frames */
     void Start()
     {
         _Sensor = KinectSensor.GetDefault();
@@ -28,6 +29,7 @@ public class BodySourceManager : MonoBehaviour
         }
     }
 
+    /* Keep reading frames .. */
     void Update()
     {
         if (_Reader != null)
@@ -48,6 +50,7 @@ public class BodySourceManager : MonoBehaviour
         }
     }
 
+    /* Turn off the sensor when Quit */
     void OnApplicationQuit()
     {
         if (_Reader != null)

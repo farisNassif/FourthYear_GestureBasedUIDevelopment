@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mBodySourceManager: {fileID: 1698423885}
+  mGestureDatabase: {fileID: 2092175426}
   mJointObject: {fileID: 1581252307236616, guid: 184f2a9019d03ed47bc3d16a742f1acc,
     type: 3}
 --- !u!1 &316927795
@@ -1173,12 +1174,12 @@ GameObject:
   - component: {fileID: 2092175427}
   - component: {fileID: 2092175426}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GestureManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2092175426
 MonoBehaviour:
   m_ObjectHideFlags: 0
