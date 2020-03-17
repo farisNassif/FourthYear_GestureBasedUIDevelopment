@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 /* Class that manages the timer for the Baloon bursting game, also handles certain sounds */
 public class TimeManager : MonoBehaviour
 {
+
+    // public GameObject restartMenu;
+
     float currentTime = 0f;
     float startingTime = 30f;
     
@@ -19,6 +23,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         currentTime = startingTime;
+        // restartMenu.SetActive(false);
     }
 
     /* Update is called once per frame */
@@ -76,5 +81,25 @@ public class TimeManager : MonoBehaviour
             SoundManagerScript.CountdownClip();
             playedSound = true;
         }
+    }
+
+    /* Game over method to be called and call UI element for restart */
+    public static void GameOver()
+    {
+        // restart button
+        // restartMenu.SetActive(true);
+
+       
+
+    }
+
+    public static void Restart()
+    {
+
+        // disable restart menu
+        // restartMenu.SetActive(false);
+
+        // load scene
+        // SceneManager.LoadScene("MainScene");
     }
 }
