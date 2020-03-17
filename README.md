@@ -19,3 +19,9 @@
 
 ### Requirements for Playing
 * Have a kinect
+
+
+
+### Refs and readme images - TODO
+Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth [pg 245]
+https://prnt.sc/rhqgy4
