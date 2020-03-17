@@ -17,20 +17,25 @@ public class Hand : MonoBehaviour
     /* When the hand collides with an object */
     private void OnTriggerEnter2D(Collider2D collision)
     { 
-        /* Depending on the type of object hit, increment/decrement score. 
-        *  Paramaters: 0 => Good Baloon | 1 => Bad Baloon | 2 => Rare Baloon */
-        if (collision.gameObject.name == "PR_Bubble(Clone)")
+        try 
         {
-            ScoreManager.instance.UpdateScore(0);
-        } else if (collision.gameObject.name == "PR_BadBaloon(Clone)")
-        {
-            ScoreManager.instance.UpdateScore(1);
+            /* Depending on the type of object hit, increment/decrement score. 
+            *  Paramaters: 0 => Good Baloon | 1 => Bad Baloon | 2 => Rare Baloon */
+            if (collision.gameObject.name == "PR_Bubble(Clone)")
+            {
+                ScoreManager.instance.UpdateScore(0);
+            } else if (collision.gameObject.name == "PR_BadBaloon(Clone)")
+            {
+                ScoreManager.instance.UpdateScore(1);
+            } 
+                SoundManagerScript.PopClip(); // Play a random pop sound
+
+            Bubble bubble = collision.gameObject.GetComponent<Bubble>();
+            StartCoroutine(bubble.Pop());
         }
-
-        
-        SoundManagerScript.PopClip(); // Deal with pop sound
-
-        Bubble bubble = collision.gameObject.GetComponent<Bubble>();
-        StartCoroutine(bubble.Pop());
+        catch(System.NullReferenceException exception) 
+        {
+            Debug.Log(exception);
+        }
     }
 }
