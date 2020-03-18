@@ -27,7 +27,7 @@ The best baloon game this side of galway
 It's NOT flappy bird
 
 <p align="center">
-  <img src = "https://im6.ezgif.com/tmp/ezgif-6-8d23b4f0578c.gif">
+  <img src = "https://s5.gifyu.com/images/TatteredLateIberianchiffchaff-mobile.gif">
 </p>
 
 ### Refs and readme images - TODO

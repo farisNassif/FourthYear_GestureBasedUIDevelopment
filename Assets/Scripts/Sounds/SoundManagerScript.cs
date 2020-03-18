@@ -64,4 +64,9 @@ public class SoundManagerScript : MonoBehaviour
         }
     }
 
+    public static void Stop()
+    {
+        AudioSrc.Stop();
+    }
+
 }
