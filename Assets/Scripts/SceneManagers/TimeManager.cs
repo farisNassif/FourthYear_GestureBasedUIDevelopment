@@ -12,15 +12,9 @@ public class TimeManager : MonoBehaviour
     public GameObject restartMenu;
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
-<<<<<<< HEAD
-    float currentTime = 0f;
-    float startingTime = 1f;
-    
-=======
-    public static float currentTime = 0f;   
+    public static float currentTime = 0f;
     float startingTime = 30f;
 
->>>>>>> 035ba59fa5665040aae7957d0b4ea29b68200209
     [HideInInspector]
     public static bool playedMusic = false;
     public static bool playedSound = false;
@@ -113,17 +107,9 @@ public class TimeManager : MonoBehaviour
     /* Game over method to be called and call UI element for restart */
     public void GameOver()
     {
-<<<<<<< HEAD
-        SoundManagerScript.Stop();
-        playedSound = false;
-        playedMusic = false;
-        // restart button
-        restartMenu.SetActive(true);
-        
-=======
         // restart menu
         restartMenu.SetActive(true);
 
->>>>>>> 035ba59fa5665040aae7957d0b4ea29b68200209
     }
+
 }
