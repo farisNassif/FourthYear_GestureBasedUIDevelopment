@@ -8,13 +8,15 @@ using Windows.Kinect;
 
 public class GameSelectScript : MonoBehaviour
 {
-    public TimeManager soundManager;
-    
+    TimeManager soundManager;
+
     // select game 
     public void SelectGame()
     {
         SceneManager.LoadScene("MainScene");
         Time.timeScale = 1f;
+        TimeManager.playedSound = false;
+        TimeManager.playedMusic = false;
     }
 
     // return to menu scene (no button)
@@ -29,8 +31,17 @@ public class GameSelectScript : MonoBehaviour
         SceneManager.LoadScene("MainScene");
         Time.timeScale = 1f;
 
-        // reset music 
-        TimeManager.playedSound = true;
-        TimeManager.playedMusic = true;
+        /*TimeManager.playedSound = false;
+        TimeManager.playedMusic = false;
+        SoundManagerScript.GameMusic_1();
+
+        if (TimeManager.currentTime.ToString("0") == "7")
+        {
+            SoundManagerScript.CountdownClip();
+        }
+        */
+
+
     }
+
 }
