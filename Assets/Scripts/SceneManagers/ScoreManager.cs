@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         if(CollisionType == 0) 
         {
             // Increment Score by 1
-            score = score + goodBaloon; 
+            score = score + goodBaloon;
         } 
         /* If the player collides with a bad balooon, execute this */
         else if (CollisionType == 1)
