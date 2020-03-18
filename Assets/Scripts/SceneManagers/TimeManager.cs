@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
 
-    // public GameObject restartMenu;
+    public GameObject restartMenu;
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
     float currentTime = 0f;
@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         currentTime = startingTime;
-        // restartMenu.SetActive(false);
+        restartMenu.SetActive(false);
     }
 
     /* Update is called once per frame */
@@ -59,15 +59,25 @@ public class TimeManager : MonoBehaviour
             /* In future call a game over method that deals with UI stuff */
             Debug.Log("Game over");
             Time.timeScale = 0f; // Freeze the scene
-            // TODO => GameOver();
+            GameOver();                       
+        }
+
+        // resets time to full when retrying the game
+        if(currentTime >= startingTime)
+        {
+            Time.timeScale = 1f;
+            playedSound = true;
+            playedMusic = true;
+
         }
 
         /* Rounds it to a whole number */
         countdownTimer.text = currentTime.ToString("0");
+        
     }
 
     /* Method that handles playing the backgroud music */
-    public static void PlayMusic() {
+    public void PlayMusic() {
         /* Bool check to make sure this doesn't execute more than once to not deafen the user */
         if (playedMusic == false) {
             SoundManagerScript.GameMusic_1();
@@ -76,7 +86,7 @@ public class TimeManager : MonoBehaviour
     }
 
     /* Method that handles playing the countdown sound */
-    public static void CountdownSound() {
+    public void CountdownSound() {
         /* Bool check to make sure this doesn't execute more than once to not deafen the user */
         if (playedSound == false) {
             SoundManagerScript.CountdownClip();
@@ -85,22 +95,12 @@ public class TimeManager : MonoBehaviour
     }
 
     /* Game over method to be called and call UI element for restart */
-    public static void GameOver()
+    public void GameOver()
     {
         // restart button
-        // restartMenu.SetActive(true);
+        restartMenu.SetActive(true);
 
-       
 
     }
 
-    public static void Restart()
-    {
-
-        // disable restart menu
-        // restartMenu.SetActive(false);
-
-        // load scene
-        // SceneManager.LoadScene("MainScene");
-    }
 }
