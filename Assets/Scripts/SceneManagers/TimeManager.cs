@@ -11,12 +11,15 @@ public class TimeManager : MonoBehaviour
 
     public GameObject restartMenu;
 
-    /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
-    float currentTime = 0f;
-    float startingTime = 1f;
+    
     
     //public static float currentTime = 0f;   
     //float startingTime = 30f;
+
+    /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
+    public static float currentTime = 0f;
+    float startingTime = 30f;
+
 
     [HideInInspector]
     public static bool playedMusic = false;
@@ -118,5 +121,8 @@ public class TimeManager : MonoBehaviour
         
         // restart menu
         restartMenu.SetActive(true);
+        // restart menu
+        restartMenu.SetActive(true);
     }
+
 }
