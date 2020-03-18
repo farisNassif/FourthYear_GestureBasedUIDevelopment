@@ -8,12 +8,9 @@ using Windows.Kinect;
 
 public class GameSelectScript : MonoBehaviour
 {
-<<<<<<< HEAD
-=======
     public TimeManager soundManager;
     
     // select game 
->>>>>>> cc231de811d55858918591c95213e5523bf35edc
     public void SelectGame()
     {
         SceneManager.LoadScene("MainScene");

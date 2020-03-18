@@ -138,15 +138,25 @@ public class ImportGestureDatabase : MonoBehaviour
                 {
 
                     DiscreteGestureResult FlapResult;
+                    DiscreteGestureResult SwipeResult;
                     /* Compare the frame against the Flap gesture */
                     results.TryGetValue(Flap, out FlapResult);
+                    results.TryGetValue(Swipe, out SwipeResult);
 
                     /* If it's 95% sure it's a Flap .. */
                     if (FlapResult.Confidence > 0.95)
                     {
                         // Can make fly method here ..
-                        Debug.Log(FlapResult.Confidence);
                         Debug.Log("I'M FLAAAAAAPPPPING");
+                        /* To make sure 500000000 flapping gestures don't get executed at once potentially */
+                        StartCoroutine(WaitForSeconds());
+                    }
+
+                    /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
+                    if (SwipeResult.Confidence > 0.25)
+                    {
+                        // Do whatever with swipe ..
+                        Debug.Log("Swipe!");
                         /* To make sure 500000000 flapping gestures don't get executed at once potentially */
                         StartCoroutine(WaitForSeconds());
                     }
