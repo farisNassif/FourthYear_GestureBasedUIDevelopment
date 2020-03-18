@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    /* Singleton so it can be accessed from other scripts */
     public static ScoreManager instance;
     /* Variables for keeping track of scores */
     public int score, highScore;

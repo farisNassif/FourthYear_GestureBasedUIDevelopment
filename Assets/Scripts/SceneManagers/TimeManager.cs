@@ -18,10 +18,11 @@ public class TimeManager : MonoBehaviour
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
     public static float currentTime = 0f;
-    float startingTime = 30f;
+    float startingTime = 3f;
 
 
     [HideInInspector]
+    public bool gameEnded = false;
     public static bool playedMusic = false;
     public static bool playedSound = false;
     public Text countdownTimer;
@@ -61,26 +62,15 @@ public class TimeManager : MonoBehaviour
         }
 
         /* Times up! Game over */
-        if (currentTime <= 0.5)
+        if (currentTime < 0 && gameEnded == false)
         {
+            gameEnded = true;
             Debug.Log("Game over");
+            
+            SoundManagerScript.Stop();
+
             Time.timeScale = 0f; // Freeze the scene
             GameOver();
-        }
-
-        // Restart game
-        if (currentTime >= startingTime)
-        {
-            // reset timescale to 1 to unfreeze game
-            Time.timeScale = 1f;
-
-
-            // reset music when at 30 seconds (restart game)
-            // playedSound = false;
-            // playedMusic = false;
-
-
-
         }
 
         /* Rounds it to a whole number */
@@ -113,16 +103,8 @@ public class TimeManager : MonoBehaviour
     /* Game over method to be called and call UI element for restart */
     public void GameOver()
     {
-        SoundManagerScript.Stop();
-        playedSound = false;
-        playedMusic = false;
+        Debug.Log("hda");
         // restart button
         restartMenu.SetActive(true);
-        
-        // restart menu
-        restartMenu.SetActive(true);
-        // restart menu
-        restartMenu.SetActive(true);
     }
-
 }

@@ -19,17 +19,20 @@ public class GameSelectScript : MonoBehaviour
         TimeManager.playedMusic = false;
     }
 
-    // return to menu scene (no button)
+    // return to menu scene 
     public void Return()
     {
         SceneManager.LoadScene("MenuScene");
     }
 
-    // restart game and return music to true (yes button)
+    /* Restart game and return music to true (yes button) */
     public void RestartGame()
     {
-        SceneManager.LoadScene("MainScene");
-        Time.timeScale = 1f;
+        Debug.Log("Restart game");
+
+        /* DON'T UNCOMMENT THIS IT WILL BREAK YOUR COMPUTER */
+        //SceneManager.LoadScene("MainScene");
+        //Time.timeScale = 1f;
 
         /*TimeManager.playedSound = false;
         TimeManager.playedMusic = false;
@@ -40,8 +43,6 @@ public class GameSelectScript : MonoBehaviour
             SoundManagerScript.CountdownClip();
         }
         */
-
-
     }
 
 }

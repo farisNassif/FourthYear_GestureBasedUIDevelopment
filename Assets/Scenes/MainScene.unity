@@ -679,9 +679,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 792751485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32580c91a2190da4e9938db46c6e36df, type: 3}
+  m_Script: {fileID: 11500000, guid: 2db728fb13221084db8aad8cf102e511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartMenu: {fileID: 1462355140}
+  gameEnded: 0
+  countdownTimer: {fileID: 937134751}
 --- !u!1 &937134750
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartMenu: {fileID: 1462355140}
+  gameEnded: 0
   countdownTimer: {fileID: 937134751}
 --- !u!1 &1037061788
 GameObject:
@@ -1354,9 +1358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453340760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113db6a98a46b7d419b2e06d4b9aedb4, type: 3}
+  m_Script: {fileID: 11500000, guid: d2c03001f0a8d614fafc976390a8a422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  scoreText: {fileID: 937134751}
 --- !u!4 &1453340762
 Transform:
   m_ObjectHideFlags: 0
@@ -1460,7 +1467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438722e596376b4794734640c6e1251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 0}
 --- !u!1 &1698423884
 GameObject:
   m_ObjectHideFlags: 0
