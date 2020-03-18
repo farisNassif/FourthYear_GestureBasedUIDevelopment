@@ -17,10 +17,11 @@ public class ImportGestureDatabase : MonoBehaviour
     /* Kinect Ref */
     Windows.Kinect.KinectSensor kinect;
     /* Gesture object which will store our flap gesture after it's loaded from the Database */
-    Gesture Flap; 
+    Gesture Flap, Swipe; 
 
     /* Build the path to the flap gesture database */
-    string databasePath = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd");
+    string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd");
+    string databasePathSwipe = System.IO.Path.Combine(Application.streamingAssetsPath, "Swipe.gbd");
 
     /* Start is called before the first frame update */
     void Start()
@@ -34,7 +35,23 @@ public class ImportGestureDatabase : MonoBehaviour
         vgbFrameReader = vgbFrameSource.OpenReader();
 
         /* Database path assignment, for each gesture, add the gesture */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePath))
+        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathFlap))
+        {
+            foreach (var gesture in vgbDb.AvailableGestures)
+            {
+                vgbFrameSource.AddGesture(gesture);
+
+                /* If 'Flap.gdb' is in the Assets/StreamingAssets folder .. */
+                if(gesture.Name.Equals("Flap"))
+                {                           
+                    Flap = gesture;
+                    Debug.Log(Flap.Name + " gesture loaded from gesture database");
+                } 
+            }    
+        }
+
+        /* Database path assignment, for each gesture, add the gesture */
+        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathSwipe))
         {
             foreach (var gesture in vgbDb.AvailableGestures)
             {
@@ -42,17 +59,16 @@ public class ImportGestureDatabase : MonoBehaviour
                 vgbFrameSource.AddGesture(gesture);
                 Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
 
-                /* I already know what mine is called since I recorded it so can 100% save it */
-                if(gesture.Name.Equals("Flap"))
+                /* If 'Swipe.gdb' is in the Assets/StreamingAssets folder .. */
+                if(gesture.Name.Equals("Swipe"))
                 {                           
-                    Flap = gesture;
-                    Debug.Log(Flap.Name + " gesture loaded from gesture database");
-                } else {
-                    Debug.Log("shit didnt work D:");
-                }
+                    Swipe = gesture;
+                    Debug.Log(Swipe.Name + " gesture loaded from gesture database");
+                } 
+    
             }    
         }
-
+        
         /* Begin reading and looking for a body */
         bodyFrameSource = kinect.BodyFrameSource;
         bodyFrameReader = bodyFrameSource.OpenReader();

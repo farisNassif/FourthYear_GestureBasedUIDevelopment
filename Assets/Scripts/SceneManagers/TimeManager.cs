@@ -11,6 +11,7 @@ public class TimeManager : MonoBehaviour
 
     // public GameObject restartMenu;
 
+    /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
     float currentTime = 0f;
     float startingTime = 30f;
     

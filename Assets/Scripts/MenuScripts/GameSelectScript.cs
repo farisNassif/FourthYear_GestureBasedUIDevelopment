@@ -8,7 +8,6 @@ using Windows.Kinect;
 
 public class GameSelectScript : MonoBehaviour
 {
-    
     public void SelectGame()
     {
         SceneManager.LoadScene("MainScene");
