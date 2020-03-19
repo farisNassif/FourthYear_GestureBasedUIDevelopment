@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3;
+    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap;
     static AudioSource AudioSrc;
     private float soundVolume = 1f;
     public static System.Random r = new System.Random();
@@ -22,6 +22,7 @@ public class SoundManagerScript : MonoBehaviour
         Pop1 = Resources.Load<AudioClip>("Pop1");
         Pop2 = Resources.Load<AudioClip>("Pop2");
         Pop3 = Resources.Load<AudioClip>("Pop3");
+        Flap = Resources.Load<AudioClip>("Flap");
 
         AudioSrc = GetComponent<AudioSource> ();
     }
@@ -42,6 +43,12 @@ public class SoundManagerScript : MonoBehaviour
     public static void CountdownClip()
     {
         AudioSrc.PlayOneShot(CountdownSound);
+    }
+
+    /* Flap sound for when a flapping user is picked up */
+    public static void FlapClip()
+    {
+        AudioSrc.PlayOneShot(Flap);
     }
 
     /* Plays a random Pop */

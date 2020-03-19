@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float horiSpeed = 1f;
     private float vertSpeed = 1f;
     public static bool IsFlying = false;
-
+    
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -25,8 +25,10 @@ public class PlayerMovement : MonoBehaviour
         /* If there was a flying gesture picked up recently .. */
         if (PlayerMovement.IsFlying == true)
         {
+            /* Play a flap sound */
+            SoundManagerScript.FlapClip();
             /* @ Alex if you wanna test without the kinect you can use wsad normally if you wanna add anything in */
-            
+
             // float horizontal = Input.GetAxis("Horizontal");
             // float vertical = Input.GetAxis("Vertical");
             Debug.Log("fly bird please");
