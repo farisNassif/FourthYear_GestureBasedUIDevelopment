@@ -19,7 +19,7 @@ public class ImportGestureDatabase : MonoBehaviour
     Windows.Kinect.KinectSensor kinect;
     /* Gesture object which will store our flap gesture after it's loaded from the Database */
     Gesture Flap, Swipe; 
-
+    PlayerMovement PM = new PlayerMovement();
     /* Build the path to the flap gesture database */
     string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd");
     string databasePathSwipe = System.IO.Path.Combine(Application.streamingAssetsPath, "Swipe.gbd");
@@ -149,13 +149,15 @@ public class ImportGestureDatabase : MonoBehaviour
                     if (FlapResult.Confidence > 0.20)
                     {
                         /* And if the flappy bird game is currently being played .. */
-                        if(SceneManager.GetActiveScene().name == "GameTwo")
+                        if(SceneManager.GetActiveScene().name == "GameTwo" && PlayerMovement.IsFlying == false)
                         {
+                            PlayerMovement.IsFlying = true;
                             // Can make fly method here ..
-                            Debug.Log("I'M FLAAAAAAPPPPING");
-                            Debug.Log(FlapResult.Confidence);
+                            //Debug.Log("I'M FLAAAAAAPPPPING");
+                            //Debug.Log(FlapResult.Confidence);
                             /* To make sure 500000000 flapping gestures don't get executed at once potentially */
                             StartCoroutine(WaitForSeconds());
+                            //PlayerMovement.IsFlying = false;
                         }
 
                     }

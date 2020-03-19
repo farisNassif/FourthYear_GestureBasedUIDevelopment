@@ -2,6 +2,7 @@
 using System.Collections;
 using Windows.Kinect;
 
+/* Basic kinect manager https://developer.microsoft.com/en-us/windows/kinect/ */
 public class BodySourceManager : MonoBehaviour
 {
     /* Kinect sensor object to turn on/off and read from */
