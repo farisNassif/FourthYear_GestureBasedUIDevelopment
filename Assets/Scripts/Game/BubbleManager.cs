@@ -26,7 +26,7 @@ public class BubbleManager : MonoBehaviour
 
     private void Update() {
         /* If hands were recognized, GameManager is ready to start and if this wasn't already ran, run it */
-        if (GameEnvironmentManager.startGame == true && executedOnce == false) {
+        if (executedOnce == false) {
             StartCoroutine(CreateBubbles());
             executedOnce = true; // To ensure multiple coroutines don't execute
         }

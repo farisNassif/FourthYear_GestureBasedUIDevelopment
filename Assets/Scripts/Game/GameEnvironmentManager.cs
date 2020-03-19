@@ -6,11 +6,11 @@ using UnityEngine;
 public class GameEnvironmentManager : MonoBehaviour
 {
     [HideInInspector]
-    public static bool startGame = false;
+    //public static bool startGame = false;
 
     void Start()
     {
-        startGame = true;
+        //startGame = true;
     }
 
     void Update()

@@ -11,14 +11,12 @@ public class TimeManager : MonoBehaviour
 
     public GameObject restartMenu;
 
-    
-    
     //public static float currentTime = 0f;   
     //float startingTime = 30f;
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
-    public static float currentTime = 0f;
-    float startingTime = 3f;
+    float currentTime = 0f;
+    float startingTime = 30f;
 
 
     [HideInInspector]
@@ -60,22 +58,23 @@ public class TimeManager : MonoBehaviour
         {
             CountdownSound();
         }
-
+        
         /* Times up! Game over */
-        if (currentTime < 0 && gameEnded == false)
+        if (currentTime.ToString("0") == "0")
         {
-            gameEnded = true;
-            Debug.Log("Game over");
-            
-            SoundManagerScript.Stop();
-
-            Time.timeScale = 0f; // Freeze the scene
-            GameOver();
+            /* Ensure this is only executed ONCE */
+            if (!gameEnded)
+            {
+                /* Stop the music and freeze the scene */
+                SoundManagerScript.Stop();
+                //Time.timeScale = 0f; 
+                GameOver();
+                gameEnded = true;
+            }
         }
 
         /* Rounds it to a whole number */
         countdownTimer.text = currentTime.ToString("0");
-
     }
 
     /* Method that handles playing the backgroud music */
@@ -103,8 +102,13 @@ public class TimeManager : MonoBehaviour
     /* Game over method to be called and call UI element for restart */
     public void GameOver()
     {
-        Debug.Log("hda");
-        // restart button
+        Debug.Log("Game over");
         restartMenu.SetActive(true);
+    }
+
+    /* Mostly for debugging, call StartCoroutine(WaitForSeconds()) to freeze for 2 seconds */
+    private IEnumerator WaitForSeconds()
+    {
+        yield return new WaitForSeconds(2);
     }
 }

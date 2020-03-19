@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Microsoft.Kinect.VisualGestureBuilder;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
@@ -26,6 +27,7 @@ public class ImportGestureDatabase : MonoBehaviour
     /* Start is called before the first frame update */
     void Start()
     {
+        
         /* Get the sensor and open it */
         kinect = KinectSensor.GetDefault();
         kinect.Open();
@@ -144,18 +146,26 @@ public class ImportGestureDatabase : MonoBehaviour
                     results.TryGetValue(Swipe, out SwipeResult);
 
                     /* If it's 95% sure it's a Flap .. */
-                    if (FlapResult.Confidence > 0.95)
+                    if (FlapResult.Confidence > 0.20)
                     {
-                        // Can make fly method here ..
-                        Debug.Log("I'M FLAAAAAAPPPPING");
-                        /* To make sure 500000000 flapping gestures don't get executed at once potentially */
-                        StartCoroutine(WaitForSeconds());
+                        /* And if the flappy bird game is currently being played .. */
+                        if(SceneManager.GetActiveScene().name == "GameTwo")
+                        {
+                            // Can make fly method here ..
+                            Debug.Log("I'M FLAAAAAAPPPPING");
+                            Debug.Log(FlapResult.Confidence);
+                            /* To make sure 500000000 flapping gestures don't get executed at once potentially */
+                            StartCoroutine(WaitForSeconds());
+                        }
+
                     }
 
                     /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
-                    if (SwipeResult.Confidence > 0.25)
+                    if (SwipeResult.Confidence > 0.5)
                     {
-                        // Do whatever with swipe ..
+                        // Do whatever with swipe .
+                        //Debug.Log("SWIPE: " + SwipeResult.Confidence);
+                        //Debug.Log("FLAP: " + FlapResult.Confidence);
                         Debug.Log("Swipe!");
                         /* To make sure 500000000 flapping gestures don't get executed at once potentially */
                         StartCoroutine(WaitForSeconds());
