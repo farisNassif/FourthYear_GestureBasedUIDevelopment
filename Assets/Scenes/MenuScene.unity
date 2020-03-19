@@ -1118,8 +1118,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319166495}
-        m_MethodName: SelectGame
+      - m_Target: {fileID: 319166496}
+        m_MethodName: GameTwo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

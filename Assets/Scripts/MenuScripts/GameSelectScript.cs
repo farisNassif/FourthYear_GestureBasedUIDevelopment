@@ -45,4 +45,9 @@ public class GameSelectScript : MonoBehaviour
         */
     }
 
+    public void GameTwo()
+    {
+        SceneManager.LoadScene("GameTwo");
+    }
+
 }
