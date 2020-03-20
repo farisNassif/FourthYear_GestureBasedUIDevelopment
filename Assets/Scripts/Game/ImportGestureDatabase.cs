@@ -18,13 +18,14 @@ public class ImportGestureDatabase : MonoBehaviour
     /* Kinect Ref */
     Windows.Kinect.KinectSensor kinect;
     /* Gesture object which will store our flap gesture after it's loaded from the Database */
-    Gesture Flap, Swipe, TurnLeft, TurnRight; 
+    Gesture Flap, Swipe, TurnLeft, TurnRight, Hover; 
     PlayerMovement PM = new PlayerMovement();
     /* Build the path to the flap gesture database */
-    string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd");
+    string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd"); // No longer using
     string databasePathSwipe = System.IO.Path.Combine(Application.streamingAssetsPath, "Swipe.gbd");
     string databasePathTurnLeft= System.IO.Path.Combine(Application.streamingAssetsPath, "TurnLeft.gbd");
     string databasePathTurnRight = System.IO.Path.Combine(Application.streamingAssetsPath, "TurnRight.gbd");
+    string databasePathHover = System.IO.Path.Combine(Application.streamingAssetsPath, "Hover.gbd");
     /* Start is called before the first frame update */
     void Start()
     {
@@ -36,22 +37,6 @@ public class ImportGestureDatabase : MonoBehaviour
         /* Frame reader and frame source assignments required for picking up gesture confidence */
         vgbFrameSource = VisualGestureBuilderFrameSource.Create(kinect, 0);
         vgbFrameReader = vgbFrameSource.OpenReader();
-
-        /* Database path assignment, for each gesture, add the gesture (Load in Flap) */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathFlap))
-        {
-            foreach (var gesture in vgbDb.AvailableGestures)
-            {
-                vgbFrameSource.AddGesture(gesture);
-
-                /* If 'Flap.gdb' is in the Assets/StreamingAssets folder .. */
-                if(gesture.Name.Equals("Flap"))
-                {                           
-                    Flap = gesture;
-                    Debug.Log(Flap.Name + " gesture loaded from gesture database");
-                } 
-            }    
-        }
 
         /* Database path assignment, for each gesture, add the gesture (Load in Swipe) */
         using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathSwipe))
@@ -105,6 +90,25 @@ public class ImportGestureDatabase : MonoBehaviour
                 {                           
                     TurnRight = gesture;
                     Debug.Log(TurnRight.Name + " gesture loaded from gesture database");
+                } 
+    
+            }    
+        }
+
+        /* Database path assignment, for each gesture, add the gesture (Load in Hover) */
+        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathHover))
+        {
+            foreach (var gesture in vgbDb.AvailableGestures)
+            {
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
+                vgbFrameSource.AddGesture(gesture);
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
+
+                /* If 'TurnRight.gdb' is in the Assets/StreamingAssets folder .. */
+                if(gesture.Name.Equals("Hover"))
+                {                           
+                    Hover = gesture;
+                    Debug.Log(Hover.Name + " gesture loaded from gesture database");
                 } 
     
             }    
@@ -179,57 +183,21 @@ public class ImportGestureDatabase : MonoBehaviour
                 if (results != null && results.Count > 0)
                 {
                     /* Gesture result declaration */
-                    DiscreteGestureResult FlapResult;
                     DiscreteGestureResult SwipeResult;
                     DiscreteGestureResult TurnLeftResult;
                     DiscreteGestureResult TurnRightResult;
+                    DiscreteGestureResult HoverResult;
                     
                     /* Compare the frame against the gestures */
-                    results.TryGetValue(Flap, out FlapResult);
                     results.TryGetValue(Swipe, out SwipeResult);
                     results.TryGetValue(TurnLeft, out TurnLeftResult);
                     results.TryGetValue(TurnRight, out TurnRightResult);
-
-
-
-                    /* If it's 95% sure it's a Flap .. */
-                    if (FlapResult.Confidence > 0.20)
-                    {
-                        /* And if the flappy bird game is currently being played .. */
-                        if(SceneManager.GetActiveScene().name == "GameTwo" && PlayerMovement.IsFlying == false)
-                        {
-                            //PlayerMovement.IsFlying = true;
-                            // Can make fly method here ..
-                            //Debug.Log("I'M FLAAAAAAPPPPING");
-                            //Debug.Log(FlapResult.Confidence);
-                            /* To make sure 500000000 flapping gestures don't get executed at once potentially */
-                            StartCoroutine(WaitForSeconds());
-                            //PlayerMovement.IsFlying = false;
-                        }
-
-                    }
-
-                    if (TurnLeftResult.Confidence > 0.2)
-                    {
-                        PlayerMovement.flyingUp = true;
-                        PlayerMovement.flyingDown = false;
-                        Debug.Log("Turning Left");  
-                        Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);  
-                        //StartCoroutine(WaitForSeconds());    
-                    }
-
-                    if (TurnRightResult.Confidence > 0.2)
-                    {
-                        PlayerMovement.flyingDown = true;
-                        PlayerMovement.flyingUp = false;
-                        Debug.Log("Turning Right");  
-                        Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
-                        //StartCoroutine(WaitForSeconds());
-                    }
+                    results.TryGetValue(Hover, out HoverResult);
 
                     /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
                     if (SwipeResult.Confidence > 0.95)
                     {
+                        Debug.Log("Swiped!");
                         // Do whatever with swipe .
                         //Debug.Log("SWIPE: " + SwipeResult.Confidence);
                         //Debug.Log("FLAP: " + FlapResult.Confidence);
@@ -238,6 +206,37 @@ public class ImportGestureDatabase : MonoBehaviour
                         /* To make sure 500000000 flapping gestures don't get executed at once potentially */
                         //StartCoroutine(WaitForSeconds());
                     }
+
+                    if (TurnLeftResult.Confidence > 0.2)
+                    {
+                        PlayerMovement.flyingUp = true;
+                        PlayerMovement.flyingDown = false;
+                        PlayerMovement.hover = false;
+                        //Debug.Log("Turning Left");  
+                        //Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);  
+                        //StartCoroutine(WaitForSeconds());    
+                    }
+
+                    if (TurnRightResult.Confidence > 0.2)
+                    {
+                        PlayerMovement.flyingDown = true;
+                        PlayerMovement.flyingUp = false;
+                        PlayerMovement.hover = false;
+                        //Debug.Log("Turning Right");  
+                        //Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
+                        //StartCoroutine(WaitForSeconds());
+                    }
+
+                    if (HoverResult.Confidence > 0.1)
+                    {
+                        PlayerMovement.hover = true;
+                        PlayerMovement.flyingDown = false;
+                        PlayerMovement.flyingUp = false;                       
+                        //Debug.Log("HOVERING");  
+                        //Debug.Log("Hovering Conf: " + HoverResult.Confidence);         
+                        //StartCoroutine(WaitForSeconds());
+                    }
+
                 }
             }
         }

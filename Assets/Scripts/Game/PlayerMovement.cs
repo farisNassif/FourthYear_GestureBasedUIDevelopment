@@ -12,10 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private bool m_isAxisInUse = false;
     private float horiSpeed = 5f;
     private float vertSpeed = 0.7f;
-    public static bool IsFlying = false;
+
     public static bool flyingUp = false;
     public static bool flyingDown = false;
-    public static bool notMoving = true;
+    public static bool hover = false;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     */
     IEnumerator Fly()
     {
-        float X = 2;
+        double X = 2.0 / 4.0;
         float timePassed = 0;
 
         /* Execute the while for x seconds */
@@ -56,16 +56,16 @@ public class PlayerMovement : MonoBehaviour
                 /* Move the bird down */
                 HandleMovement(0f, -1);   
             }
-            else 
+            if(PlayerMovement.hover == true)
             {
-                //HandleMovement(0f, 0);
+                HandleMovement(0f, 0);
             }
 
             /* Calculate real time since while loop was executed */
             timePassed += Time.deltaTime;
     
             /* When the while makes its last iteration, set flying to false, user has to flap to make this execute again */
-            yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false;
+            yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false && PlayerMovement.hover == true;
         }  
     }
 }
