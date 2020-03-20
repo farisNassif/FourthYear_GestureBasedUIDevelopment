@@ -209,22 +209,16 @@ public class ImportGestureDatabase : MonoBehaviour
 
                     }
 
-                    if (TurnLeftResult.Confidence > 0.2 || TurnRightResult.Confidence > 0.2)
+                    if (TurnLeftResult.Confidence > 0.2 )
                     {
-                        if (TurnLeftResult.Confidence+0.2 > TurnRightResult.Confidence)
-                        {
-                            Debug.Log("Turning Left");  
-                            Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);     
-                        } else {
-                            Debug.Log("Turning Right");  
-                            Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);    
-                        }
- 
+                        Debug.Log("Turning Left");  
+                        Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);      
                     }
 
                     if (TurnRightResult.Confidence > 0.2)
                     {
-     
+                        Debug.Log("Turning Right");  
+                        Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
                     }
 
                     /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
