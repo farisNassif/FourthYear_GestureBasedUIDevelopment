@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
 {
     /* Bird body */
     private Rigidbody2D myRigidbody;
-
     /* Speed variables for flying */
     private float horiSpeed = 5f;
     private float vertSpeed = 0.7f;
