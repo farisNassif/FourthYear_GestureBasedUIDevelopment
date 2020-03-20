@@ -18,12 +18,13 @@ public class ImportGestureDatabase : MonoBehaviour
     /* Kinect Ref */
     Windows.Kinect.KinectSensor kinect;
     /* Gesture object which will store our flap gesture after it's loaded from the Database */
-    Gesture Flap, Swipe; 
+    Gesture Flap, Swipe, TurnLeft, TurnRight; 
     PlayerMovement PM = new PlayerMovement();
     /* Build the path to the flap gesture database */
     string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd");
     string databasePathSwipe = System.IO.Path.Combine(Application.streamingAssetsPath, "Swipe.gbd");
-
+    string databasePathTurnLeft= System.IO.Path.Combine(Application.streamingAssetsPath, "TurnLeft.gbd");
+    string databasePathTurnRight = System.IO.Path.Combine(Application.streamingAssetsPath, "TurnRight.gbd");
     /* Start is called before the first frame update */
     void Start()
     {
@@ -36,7 +37,7 @@ public class ImportGestureDatabase : MonoBehaviour
         vgbFrameSource = VisualGestureBuilderFrameSource.Create(kinect, 0);
         vgbFrameReader = vgbFrameSource.OpenReader();
 
-        /* Database path assignment, for each gesture, add the gesture */
+        /* Database path assignment, for each gesture, add the gesture (Load in Flap) */
         using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathFlap))
         {
             foreach (var gesture in vgbDb.AvailableGestures)
@@ -52,7 +53,7 @@ public class ImportGestureDatabase : MonoBehaviour
             }    
         }
 
-        /* Database path assignment, for each gesture, add the gesture */
+        /* Database path assignment, for each gesture, add the gesture (Load in Swipe) */
         using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathSwipe))
         {
             foreach (var gesture in vgbDb.AvailableGestures)
@@ -66,6 +67,44 @@ public class ImportGestureDatabase : MonoBehaviour
                 {                           
                     Swipe = gesture;
                     Debug.Log(Swipe.Name + " gesture loaded from gesture database");
+                } 
+    
+            }    
+        }
+
+        /* Database path assignment, for each gesture, add the gesture (Load in Turn Left) */
+        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathTurnLeft))
+        {
+            foreach (var gesture in vgbDb.AvailableGestures)
+            {
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
+                vgbFrameSource.AddGesture(gesture);
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
+
+                /* If 'TurnLeft.gdb' is in the Assets/StreamingAssets folder .. */
+                if(gesture.Name.Equals("TurnLeft"))
+                {                           
+                    TurnLeft = gesture;
+                    Debug.Log(TurnLeft.Name + " gesture loaded from gesture database");
+                } 
+    
+            }    
+        }
+
+        /* Database path assignment, for each gesture, add the gesture (Load in Turn Right) */
+        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathTurnRight))
+        {
+            foreach (var gesture in vgbDb.AvailableGestures)
+            {
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
+                vgbFrameSource.AddGesture(gesture);
+                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
+
+                /* If 'TurnRight.gdb' is in the Assets/StreamingAssets folder .. */
+                if(gesture.Name.Equals("TurnRight"))
+                {                           
+                    TurnRight = gesture;
+                    Debug.Log(TurnRight.Name + " gesture loaded from gesture database");
                 } 
     
             }    
@@ -136,14 +175,22 @@ public class ImportGestureDatabase : MonoBehaviour
             {
                 var results = vgbFrame.DiscreteGestureResults;
 
+                /* If there are actually results in the frame */
                 if (results != null && results.Count > 0)
                 {
-
+                    /* Gesture result declaration */
                     DiscreteGestureResult FlapResult;
                     DiscreteGestureResult SwipeResult;
-                    /* Compare the frame against the Flap gesture */
+                    DiscreteGestureResult TurnLeftResult;
+                    DiscreteGestureResult TurnRightResult;
+                    
+                    /* Compare the frame against the gestures */
                     results.TryGetValue(Flap, out FlapResult);
                     results.TryGetValue(Swipe, out SwipeResult);
+                    results.TryGetValue(TurnLeft, out TurnLeftResult);
+                    results.TryGetValue(TurnRight, out TurnRightResult);
+
+
 
                     /* If it's 95% sure it's a Flap .. */
                     if (FlapResult.Confidence > 0.20)
@@ -162,15 +209,28 @@ public class ImportGestureDatabase : MonoBehaviour
 
                     }
 
+                    if (TurnLeftResult.Confidence > 0.3)
+                    {
+                        Debug.Log("Turning Left");  
+                        Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);      
+                    }
+
+                    if (TurnRightResult.Confidence > 0.2)
+                    {
+                        Debug.Log("Turning Right");  
+                        Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
+                    }
+
                     /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
-                    if (SwipeResult.Confidence > 0.5)
+                    if (SwipeResult.Confidence > 0.95)
                     {
                         // Do whatever with swipe .
                         //Debug.Log("SWIPE: " + SwipeResult.Confidence);
                         //Debug.Log("FLAP: " + FlapResult.Confidence);
-                        Debug.Log("Swipe!");
+                        //Debug.Log("Swipe!");
+                        //Debug.Log("Swipe Conf:" + SwipeResult.Confidence);
                         /* To make sure 500000000 flapping gestures don't get executed at once potentially */
-                        StartCoroutine(WaitForSeconds());
+                        //StartCoroutine(WaitForSeconds());
                     }
                 }
             }
