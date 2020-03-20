@@ -194,8 +194,8 @@ public class ImportGestureDatabase : MonoBehaviour
                     results.TryGetValue(TurnRight, out TurnRightResult);
                     results.TryGetValue(Hover, out HoverResult);
 
-                    /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
-                    if (SwipeResult.Confidence > 0.95)
+                    /* If it's 98% sure a swipe was just made */
+                    if (SwipeResult.Confidence >= 0.98)
                     {
                         Debug.Log("Swiped!");
                         // Do whatever with swipe .
