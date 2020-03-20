@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
         /* If there was a flying gesture picked up recently .. */
         if (PlayerMovement.IsFlying == true)
         {
