@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
 
     private bool m_isAxisInUse = false;
-    private float horiSpeed = 1f;
-    private float vertSpeed = 1f;
+    private float horiSpeed = 5f;
+    private float vertSpeed = 1.5f;
     public static bool IsFlying = false;
-    
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -29,15 +29,16 @@ public class PlayerMovement : MonoBehaviour
             SoundManagerScript.FlapClip();
             /* @ Alex if you wanna test without the kinect you can use wsad normally if you wanna add anything in */
 
-            // float horizontal = Input.GetAxis("Horizontal");
-            // float vertical = Input.GetAxis("Vertical");
+
             Debug.Log("fly bird please");
             StartCoroutine(Fly());
         } else {
             // Todo -> Fall or something?
             HandleMovement(0f, 0f); 
         }
-
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            HandleMovement(horizontal, vertical);
     }
 
     /* Handles the flying movement of the bird */

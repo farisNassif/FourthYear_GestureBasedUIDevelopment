@@ -17,9 +17,6 @@ public class BackgroundHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* Uncomment this stuff for parallax background */
-
-        /*
         pos += speed;
 
         if (pos > 1.0F)
@@ -27,6 +24,6 @@ public class BackgroundHelper : MonoBehaviour
             pos -= 1.0F;
 
         image.uvRect = new Rect(pos, 0, 1, 1);
-        */
+        
     }
 }
