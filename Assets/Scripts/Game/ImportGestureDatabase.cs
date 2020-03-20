@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Microsoft.Kinect.VisualGestureBuilder;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
 
-/* Class that builds the path to the gesture Database, loads in and saves those pre recorded gestures 
+/* Class that builds the path to the gesture Database, loads in and saves those pre recorded gestures then listens to see if one was picked up.
 ** The code in this class was adapted with the help from the book 'Beginning Microsoft Kinect for Windows SDK 2.0' (Page 240-245)
 */
 public class ImportGestureDatabase : MonoBehaviour
@@ -26,6 +25,7 @@ public class ImportGestureDatabase : MonoBehaviour
     string databasePathTurnLeft= System.IO.Path.Combine(Application.streamingAssetsPath, "TurnLeft.gbd");
     string databasePathTurnRight = System.IO.Path.Combine(Application.streamingAssetsPath, "TurnRight.gbd");
     string databasePathHover = System.IO.Path.Combine(Application.streamingAssetsPath, "Hover.gbd");
+
     /* Start is called before the first frame update */
     void Start()
     {
@@ -184,57 +184,54 @@ public class ImportGestureDatabase : MonoBehaviour
                 {
                     /* Gesture result declaration */
                     DiscreteGestureResult SwipeResult;
+                    /* The following three are continious but VS gives out when I declare them as so.
+                    ** It doesn't make a difference though it still works as intended.
+                    */
                     DiscreteGestureResult TurnLeftResult;
                     DiscreteGestureResult TurnRightResult;
                     DiscreteGestureResult HoverResult;
                     
-                    /* Compare the frame against the gestures */
+                    /* ----- Compare the frame against the gestures -----*/
+
+                    /* Discrete gesture data results */
                     results.TryGetValue(Swipe, out SwipeResult);
+                    /* Continious gesture data results */
                     results.TryGetValue(TurnLeft, out TurnLeftResult);
                     results.TryGetValue(TurnRight, out TurnRightResult);
                     results.TryGetValue(Hover, out HoverResult);
+
+                    /* ----- Listening, or detecting to see if the user made a gesture like a loaded one from the Database .. ----- */
 
                     /* If it's 98% sure a swipe was just made */
                     if (SwipeResult.Confidence >= 0.98)
                     {
                         Debug.Log("Swiped!");
-                        // Do whatever with swipe .
-                        //Debug.Log("SWIPE: " + SwipeResult.Confidence);
-                        //Debug.Log("FLAP: " + FlapResult.Confidence);
-                        //Debug.Log("Swipe!");
-                        //Debug.Log("Swipe Conf:" + SwipeResult.Confidence);
-                        /* To make sure 500000000 flapping gestures don't get executed at once potentially */
-                        //StartCoroutine(WaitForSeconds());
+                        /* Do menu stuff here .. */
+
                     }
 
+                    /* The following 3 if statements manages the flying status of the bird in Playermovement.
+                    ** Only one condition can be true at one given time, allowing for smooth navigation of the bird
+                    ** as long as the user is performing the real time continious gesture.
+                    ** The flying gestures were trained on both ideal and worst case scenario data/videos to ensure maximum accuracy.
+                    */
                     if (TurnLeftResult.Confidence > 0.2)
                     {
                         PlayerMovement.flyingUp = true;
                         PlayerMovement.flyingDown = false;
-                        PlayerMovement.hover = false;
-                        //Debug.Log("Turning Left");  
-                        //Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);  
-                        //StartCoroutine(WaitForSeconds());    
+                        PlayerMovement.hover = false;  
                     }
-
-                    if (TurnRightResult.Confidence > 0.2)
+                    else if (TurnRightResult.Confidence > 0.2)
                     {
                         PlayerMovement.flyingDown = true;
                         PlayerMovement.flyingUp = false;
                         PlayerMovement.hover = false;
-                        //Debug.Log("Turning Right");  
-                        //Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
-                        //StartCoroutine(WaitForSeconds());
                     }
-
-                    if (HoverResult.Confidence > 0.1)
+                    else if(HoverResult.Confidence > 0.1)
                     {
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.flyingUp = false;                       
-                        //Debug.Log("HOVERING");  
-                        //Debug.Log("Hovering Conf: " + HoverResult.Confidence);         
-                        //StartCoroutine(WaitForSeconds());
                     }
 
                 }
@@ -242,6 +239,9 @@ public class ImportGestureDatabase : MonoBehaviour
         }
     }
 
+    /* IEnumerator that delays for 1 second.
+    ** This can be handy when we only really need 1 gesture to execute in a given second.
+    */
     private IEnumerator WaitForSeconds()
     {
         /* Pause the frame reader, wait 1 second and unpause it */
@@ -250,7 +250,7 @@ public class ImportGestureDatabase : MonoBehaviour
         vgbFrameReader.IsPaused = false;
     }
 
-    // Update is called once per frame
+    /* Update isn't really needed in this class, leaving just incase unity goes mad */
     void Update()
     {
         
