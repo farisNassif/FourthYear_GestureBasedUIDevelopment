@@ -34,6 +34,12 @@ public class Recognition : MonoBehaviour
             OneCalled();
         });
 
+        // Add two to dictionary
+        keywords.Add("two", () =>
+        {
+            TwoCalled();
+        });
+
         // Add back to dictionary
         keywords.Add("back", () =>
         {
@@ -56,7 +62,7 @@ public class Recognition : MonoBehaviour
         }
     }
 
-    
+
     void SelectCalled()
     {
         // saying select will deactivate main menu and bring player to the game select menu
@@ -74,11 +80,17 @@ public class Recognition : MonoBehaviour
         }
     }
 
-    
+
     void OneCalled()
     {
         // this will load into the scene one if "one" or "game one" is said (both are recognised)
-        SceneManager.LoadScene("MainScene");      
+        SceneManager.LoadScene("MainScene");
+    }
+
+    void TwoCalled()
+    {
+        // this will load into the scene one if "one" or "game one" is said (both are recognised)
+        SceneManager.LoadScene("GameTwo");
     }
 
     void BackCalled()
