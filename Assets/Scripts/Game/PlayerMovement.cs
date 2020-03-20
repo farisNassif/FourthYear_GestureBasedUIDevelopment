@@ -11,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool m_isAxisInUse = false;
     private float horiSpeed = 5f;
-    private float vertSpeed = 1.5f;
+    private float vertSpeed = 0.7f;
     public static bool IsFlying = false;
+    public static bool flyingUp = false;
+    public static bool flyingDown = false;
+    public static bool notMoving = true;
 
     void Start()
     {
@@ -21,23 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        /* If there was a flying gesture picked up recently .. */
-        if (PlayerMovement.IsFlying == true)
-        {
-            /* Play a flap sound */
-            SoundManagerScript.FlapClip();
-            /* @ Alex if you wanna test without the kinect you can use wsad normally if you wanna add anything in */
-
-
-            Debug.Log("fly bird please");
-            StartCoroutine(Fly());
-        } else {
-            // Todo -> Fall or something?
-            HandleMovement(0f, 0f); 
-        }
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            HandleMovement(horizontal, vertical);
+        StartCoroutine(Fly());
     }
 
     /* Handles the flying movement of the bird */
@@ -59,14 +46,26 @@ public class PlayerMovement : MonoBehaviour
         /* Execute the while for x seconds */
         while (timePassed < X)
         {
-            /* Move the bird */
-            HandleMovement(0f, 1f);   
+            if(PlayerMovement.flyingUp == true)
+            {
+                /* Move the bird up */
+                HandleMovement(0f, 1);   
+            } 
+            if(PlayerMovement.flyingDown == true)
+            {
+                /* Move the bird down */
+                HandleMovement(0f, -1);   
+            }
+            else 
+            {
+                //HandleMovement(0f, 0);
+            }
 
             /* Calculate real time since while loop was executed */
             timePassed += Time.deltaTime;
     
             /* When the while makes its last iteration, set flying to false, user has to flap to make this execute again */
-            yield return PlayerMovement.IsFlying = false;
+            yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false;
         }  
     }
 }

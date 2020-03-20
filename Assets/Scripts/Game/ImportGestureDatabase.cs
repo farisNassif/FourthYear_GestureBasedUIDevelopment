@@ -198,7 +198,7 @@ public class ImportGestureDatabase : MonoBehaviour
                         /* And if the flappy bird game is currently being played .. */
                         if(SceneManager.GetActiveScene().name == "GameTwo" && PlayerMovement.IsFlying == false)
                         {
-                            PlayerMovement.IsFlying = true;
+                            //PlayerMovement.IsFlying = true;
                             // Can make fly method here ..
                             //Debug.Log("I'M FLAAAAAAPPPPING");
                             //Debug.Log(FlapResult.Confidence);
@@ -209,16 +209,22 @@ public class ImportGestureDatabase : MonoBehaviour
 
                     }
 
-                    if (TurnLeftResult.Confidence > 0.2 )
+                    if (TurnLeftResult.Confidence > 0.2)
                     {
+                        PlayerMovement.flyingUp = true;
+                        PlayerMovement.flyingDown = false;
                         Debug.Log("Turning Left");  
-                        Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);      
+                        Debug.Log("Turning Left Conf: " + TurnLeftResult.Confidence);  
+                        //StartCoroutine(WaitForSeconds());    
                     }
 
                     if (TurnRightResult.Confidence > 0.2)
                     {
+                        PlayerMovement.flyingDown = true;
+                        PlayerMovement.flyingUp = false;
                         Debug.Log("Turning Right");  
                         Debug.Log("Turning Right Conf: " + TurnRightResult.Confidence);         
+                        //StartCoroutine(WaitForSeconds());
                     }
 
                     /* Since this isn't a game mechanic and more of a quality of life one, doesn't need to be as confident as Flap/Flying */
