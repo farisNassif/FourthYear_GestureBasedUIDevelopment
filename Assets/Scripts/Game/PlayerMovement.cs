@@ -31,6 +31,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown("a"))
+        {
+            PlayerMovement.flyingUp = true;
+            PlayerMovement.flyingDown = false;
+            PlayerMovement.hover = false;
+        }
+
+        if (Input.GetKeyDown("s"))
+        {
+            PlayerMovement.hover = true;
+            PlayerMovement.flyingUp = false;
+            PlayerMovement.flyingDown = false;
+        }
+
+        if (Input.GetKeyDown("d"))
+        {
+            PlayerMovement.flyingDown = true;
+            PlayerMovement.hover = false;
+            PlayerMovement.flyingUp = false;
+        }
+
         /* Execute the Coroutine every iteration */
         StartCoroutine(Fly());
     }
