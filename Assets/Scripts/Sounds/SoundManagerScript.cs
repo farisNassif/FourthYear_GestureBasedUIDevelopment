@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap;
+    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap, BirdDie, BirdGameMusic;
     static AudioSource AudioSrc;
     private float soundVolume = 1f;
     public static System.Random r = new System.Random();
@@ -18,11 +18,13 @@ public class SoundManagerScript : MonoBehaviour
     {
         /* All references for the sound files */
         GameMusic = Resources.Load<AudioClip>("GameMusic1");
+        BirdGameMusic = Resources.Load<AudioClip>("BirdGameMusic");
         CountdownSound = Resources.Load<AudioClip>("Countdown");
         Pop1 = Resources.Load<AudioClip>("Pop1");
         Pop2 = Resources.Load<AudioClip>("Pop2");
         Pop3 = Resources.Load<AudioClip>("Pop3");
         Flap = Resources.Load<AudioClip>("Flap");
+        BirdDie = Resources.Load<AudioClip>("BirdDie");
 
         AudioSrc = GetComponent<AudioSource> ();
     }
@@ -49,6 +51,18 @@ public class SoundManagerScript : MonoBehaviour
     public static void FlapClip()
     {
         AudioSrc.PlayOneShot(Flap);
+    }
+
+    /* Death sound for when the bird gets hit */
+    public static void BirdDieClip()
+    {
+        AudioSrc.PlayOneShot(BirdDie);
+    }
+
+    /* Music for the bird game */
+    public static void BirdGameMusicPlay()
+    {
+        AudioSrc.PlayOneShot(BirdGameMusic);
     }
 
     /* Plays a random Pop */

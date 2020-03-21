@@ -84,4 +84,11 @@ public class PlayerMovement : MonoBehaviour
             yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false && PlayerMovement.hover == true;
         }  
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Die");
+        SoundManagerScript.BirdDieClip();
+        Destroy(this.gameObject);
+    }
 }
