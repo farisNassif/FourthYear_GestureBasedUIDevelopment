@@ -108,15 +108,21 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
+    /* If the bird collides with something .. */
     void OnCollisionEnter2D(Collision2D col)
     {
+        /* If it was an asteroid .. */
         if (col.gameObject.name == "Asteroid 2(Clone)")
         {
-            Debug.Log("Die");
-            Destroy(this.gameObject);
-            SoundManagerScript.BirdDieClip();
+            Debug.Log("Die"); // Test
+            SoundManagerScript.BirdDieClip(); // Play death sound
+
+            /* Decrement a life visually */
             HealthBarHUDTester.Hurt(1f);
-            player.transform.position = respawnPoint.transform.position;
+
+            /* Ehhh .. just run the game and you'll see what this does */
+            Instantiate (player, player.transform.position = respawnPoint.transform.position, Quaternion.identity);
+            
             
         }
     }

@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7a8115d21385f4e976e9c49ff1e30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 873083016}
+  player: {fileID: 1735556303}
   respawnPoint: {fileID: 1298881818}
   statusOfFlying: {fileID: 700894500}
 --- !u!50 &1735556306
