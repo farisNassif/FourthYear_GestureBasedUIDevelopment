@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform respawnPoint;
     /* Bird body */
     private Rigidbody2D myRigidbody;
     /* Speed variables for flying */
@@ -108,8 +110,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Die");
-        SoundManagerScript.BirdDieClip();
-        Destroy(this.gameObject);
+        if (col.gameObject.name == "Asteroid 2(Clone)")
+        {
+            Debug.Log("Die");
+            Destroy(this.gameObject);
+            SoundManagerScript.BirdDieClip();
+            HealthBarHUDTester.Hurt(1f);
+            player.transform.position = respawnPoint.transform.position;
+            
+        }
     }
 }
