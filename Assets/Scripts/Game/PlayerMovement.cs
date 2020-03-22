@@ -123,6 +123,13 @@ public class PlayerMovement : MonoBehaviour
 
             /* Decrement a life visually */
             HealthBarHUDTester.Hurt(1f);
+
+            /* No health left, game over! */
+            if (PlayerStats.Instance.Health <= 0)
+            {
+                Debug.Log("Game is over, 0 health!");
+            }
+
             /* Replace the player back at the starting point, illusion of respawning */
             transform.position = respawnPoint.transform.position;
             /* Become immune to damage for 3 seconds */     
