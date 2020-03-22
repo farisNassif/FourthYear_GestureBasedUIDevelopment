@@ -45,9 +45,14 @@ public class VoiceScript : MonoBehaviour
     // call fire
     void FireCalled()
     {
-        // create bullet if fire is said, rest is handled in bullet script
-        Debug.Log("Fire called");
-        Instantiate(bulletPrefab, bullet.position, bullet.rotation);
+        if (ShootScript.currentCharge==100)
+        {
+            // create bullet if fire is said, rest is handled in bullet script
+            Debug.Log("Fire called");
+            Instantiate(bulletPrefab, bullet.position, bullet.rotation);
+            ShootScript.currentCharge = 0;
+        }
+
 
     }
 

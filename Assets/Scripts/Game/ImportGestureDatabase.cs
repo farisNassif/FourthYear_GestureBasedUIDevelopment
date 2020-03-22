@@ -16,20 +16,20 @@ public class ImportGestureDatabase : MonoBehaviour
     Windows.Kinect.BodyFrameReader bodyFrameReader;
     /* Kinect Ref */
     Windows.Kinect.KinectSensor kinect;
-    /* Gesture object which will store our flap gesture after it's loaded from the Database */
+    /* Gesture object which will store the gestures after they're loaded from the Database */
     Gesture Flap, Swipe, TurnLeft, TurnRight, Hover; 
     PlayerMovement PM = new PlayerMovement();
-    /* Build the path to the flap gesture database */
-    string databasePathFlap = System.IO.Path.Combine(Application.streamingAssetsPath, "Flap.gbd"); // No longer using
-    string databasePathSwipe = System.IO.Path.Combine(Application.streamingAssetsPath, "Swipe.gbd");
-    string databasePathTurnLeft= System.IO.Path.Combine(Application.streamingAssetsPath, "TurnLeft.gbd");
-    string databasePathTurnRight = System.IO.Path.Combine(Application.streamingAssetsPath, "TurnRight.gbd");
-    string databasePathHover = System.IO.Path.Combine(Application.streamingAssetsPath, "Hover.gbd");
+    /* Array to hold gesture database file names for more efficient access */
+    string[] gesturePaths = new string[4] {
+        "Swipe.gbd",
+        "TurnLeft.gbd",
+        "TurnRight.gbd",
+        "Hover.gbd",
+    };
 
-    /* Start is called before the first frame update */
+    /* On start/play, make sure the kinect is open and read in all saved gestures from the .gbd files */
     void Start()
     {
-        
         /* Get the sensor and open it */
         kinect = KinectSensor.GetDefault();
         kinect.Open();
@@ -38,80 +38,43 @@ public class ImportGestureDatabase : MonoBehaviour
         vgbFrameSource = VisualGestureBuilderFrameSource.Create(kinect, 0);
         vgbFrameReader = vgbFrameSource.OpenReader();
 
-        /* Database path assignment, for each gesture, add the gesture (Load in Swipe) */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathSwipe))
-        {
-            foreach (var gesture in vgbDb.AvailableGestures)
+        /* Loop four times, once for each gesture to be loaded in */
+        for (int i = 0 ; i < 4 ; i++) {
+            /* Depending on loop will change gesturePaths to Swipe/TurnLeft/TurnRight/Hover to load in individually */
+            string databasePath = System.IO.Path.Combine(Application.streamingAssetsPath, gesturePaths[i]);
+
+            /* Database path assignment, for each gesture, add the gesture (Load in Swipe) */
+            using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePath))
             {
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
-                vgbFrameSource.AddGesture(gesture);
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
+                foreach (var gesture in vgbDb.AvailableGestures)
+                {
+                    Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
+                    vgbFrameSource.AddGesture(gesture);
+                    Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
 
-                /* If 'Swipe.gdb' is in the Assets/StreamingAssets folder .. */
-                if(gesture.Name.Equals("Swipe"))
-                {                           
-                    Swipe = gesture;
-                    Debug.Log(Swipe.Name + " gesture loaded from gesture database");
-                } 
-    
-            }    
-        }
-
-        /* Database path assignment, for each gesture, add the gesture (Load in Turn Left) */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathTurnLeft))
-        {
-            foreach (var gesture in vgbDb.AvailableGestures)
-            {
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
-                vgbFrameSource.AddGesture(gesture);
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
-
-                /* If 'TurnLeft.gdb' is in the Assets/StreamingAssets folder .. */
-                if(gesture.Name.Equals("TurnLeft"))
-                {                           
-                    TurnLeft = gesture;
-                    Debug.Log(TurnLeft.Name + " gesture loaded from gesture database");
-                } 
-    
-            }    
-        }
-
-        /* Database path assignment, for each gesture, add the gesture (Load in Turn Right) */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathTurnRight))
-        {
-            foreach (var gesture in vgbDb.AvailableGestures)
-            {
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
-                vgbFrameSource.AddGesture(gesture);
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
-
-                /* If 'TurnRight.gdb' is in the Assets/StreamingAssets folder .. */
-                if(gesture.Name.Equals("TurnRight"))
-                {                           
-                    TurnRight = gesture;
-                    Debug.Log(TurnRight.Name + " gesture loaded from gesture database");
-                } 
-    
-            }    
-        }
-
-        /* Database path assignment, for each gesture, add the gesture (Load in Hover) */
-        using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePathHover))
-        {
-            foreach (var gesture in vgbDb.AvailableGestures)
-            {
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
-                vgbFrameSource.AddGesture(gesture);
-                Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
-
-                /* If 'TurnRight.gdb' is in the Assets/StreamingAssets folder .. */
-                if(gesture.Name.Equals("Hover"))
-                {                           
-                    Hover = gesture;
-                    Debug.Log(Hover.Name + " gesture loaded from gesture database");
-                } 
-    
-            }    
+                    /* Get all the gesture names and assign them to local gesture variables */
+                    if(gesture.Name.Equals("Swipe"))
+                    {                           
+                        Swipe = gesture;
+                        Debug.Log(Swipe.Name + " gesture loaded from gesture database");
+                    } 
+                    else if (gesture.Name.Equals("TurnLeft"))
+                    {
+                        TurnLeft = gesture;
+                        Debug.Log(TurnLeft.Name + " gesture loaded from gesture database");
+                    } 
+                    else if (gesture.Name.Equals("TurnRight"))
+                    {
+                        TurnRight = gesture;
+                        Debug.Log(TurnRight.Name + " gesture loaded from gesture database");
+                    } 
+                    else if (gesture.Name.Equals("Hover"))
+                    {
+                        Hover = gesture;
+                        Debug.Log(Hover.Name + " gesture loaded from gesture database");
+                    }
+                }    
+            }
         }
         
         /* Begin reading and looking for a body */
@@ -187,9 +150,7 @@ public class ImportGestureDatabase : MonoBehaviour
                     /* The following three are continious but VS gives out when I declare them as so.
                     ** It doesn't make a difference though it still works as intended.
                     */
-                    DiscreteGestureResult TurnLeftResult;
-                    DiscreteGestureResult TurnRightResult;
-                    DiscreteGestureResult HoverResult;
+                    DiscreteGestureResult TurnLeftResult, TurnRightResult, HoverResult;
                     
                     /* ----- Compare the frame against the gestures -----*/
 
@@ -220,18 +181,21 @@ public class ImportGestureDatabase : MonoBehaviour
                         PlayerMovement.flyingUp = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.hover = false;  
+                        Debug.Log("Turning Left(Up)!");
                     }
                     else if (TurnRightResult.Confidence > 0.2)
                     {
                         PlayerMovement.flyingDown = true;
                         PlayerMovement.flyingUp = false;
                         PlayerMovement.hover = false;
+                        Debug.Log("Turning Right(Down)!");
                     }
                     else if(HoverResult.Confidence > 0.1)
                     {
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;
-                        PlayerMovement.flyingUp = false;                       
+                        PlayerMovement.flyingUp = false;      
+                        Debug.Log("Hovering!");                 
                     }
 
                 }

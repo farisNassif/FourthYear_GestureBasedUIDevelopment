@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour {
-    public float speed = 10.0f;
+    public float speed = 35.0f;
     private Rigidbody2D rb;
     private Vector2 screenBounds;
 

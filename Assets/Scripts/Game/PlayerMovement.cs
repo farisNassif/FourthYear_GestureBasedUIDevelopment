@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
     /* Speed variables for flying */
     private float horiSpeed = 5f;
-    private float vertSpeed = 0.7f;
+    private float vertSpeed = 1f;
 
     /* After respawn become invunerable for x seconds */
     private bool invincible = false;
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     /* If the bird collides with something .. */
     void OnCollisionEnter2D(Collision2D col)
     {
-        /* If it was an asteroid .. */
+        /* If it was an asteroid and player hasn't respawned recently .. */
         if (col.gameObject.name == "Asteroid 2(Clone)" && invincible == false)
         {
             Debug.Log("Die"); // Test
@@ -133,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator InvunerableTimer()
     {
+        /* Invunerability for 3 seconds after dying */
         invincible = true; 
         yield return new WaitForSeconds(3);
         invincible = false;

@@ -1161,7 +1161,7 @@ Transform:
   m_GameObject: {fileID: 873083015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1735556303}
   m_Father: {fileID: 0}
@@ -1182,7 +1182,6 @@ MonoBehaviour:
   bullet: {fileID: 377183194}
   bulletPrefab: {fileID: 7016218020150720562, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6,
     type: 3}
-  currentCharge: 100
   shootCharge: {fileID: 1172300578}
 --- !u!1 &895708024
 GameObject:
@@ -2465,7 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1992124693673210542, guid: cfe2c4fca834fca44b327f5400fa3343,
     type: 3}
-  respawnTime: 1
+  respawnTime: 0.6
 --- !u!1 &2081262552
 GameObject:
   m_ObjectHideFlags: 0
