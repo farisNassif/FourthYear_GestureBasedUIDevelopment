@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        /* Temp for testing, using kinect on deployment */
         if (Input.GetKeyDown("a"))
         {
             PlayerMovement.flyingUp = true;
@@ -119,10 +120,9 @@ public class PlayerMovement : MonoBehaviour
 
             /* Decrement a life visually */
             HealthBarHUDTester.Hurt(1f);
-
             /* Ehhh .. just run the game and you'll see what this does */
-            Instantiate (player, player.transform.position = respawnPoint.transform.position, Quaternion.identity);
-            
+           // Instantiate (player, player.transform.position = respawnPoint.transform.position, Quaternion.identity);
+            transform.position = respawnPoint.transform.position;
             
         }
 
