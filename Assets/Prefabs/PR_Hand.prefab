@@ -91,8 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4551246133346816}
   - component: {fileID: 58161556273064410}
-  - component: {fileID: 114349096666611954}
   - component: {fileID: 50476735779836974}
+  - component: {fileID: 4450262307131136888}
   m_Layer: 0
   m_Name: PR_Hand
   m_TagString: Hand
@@ -131,19 +131,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114349096666611954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581252307236616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c50b56485b5834485bbac920bac237, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mHandMesh: {fileID: 4048595892630688}
 --- !u!50 &50476735779836974
 Rigidbody2D:
   serializedVersion: 4
@@ -165,3 +152,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4450262307131136888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581252307236616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3afed4b92ed0c147978f0e25f7bc9bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mHandMesh: {fileID: 4551246133346816}

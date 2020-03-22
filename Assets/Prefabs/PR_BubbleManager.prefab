@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4336931173977538}
-  - component: {fileID: 114541750516691604}
+  - component: {fileID: 6770460751821007273}
   m_Layer: 0
   m_Name: PR_BubbleManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114541750516691604
+--- !u!114 &6770460751821007273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,9 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1371511628477458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3368ad0b2bc986845a51d3426291e44b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8756decf936c0cb41aa7ea3807f8673d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mBubblePrefab: {fileID: 1448375104018068, guid: 9acb83655e8aef54c8c2f0a7a53494b6,
     type: 3}
-  mBadBubblePrefab: {fileID: 0}
+  mBadBubblePrefab: {fileID: 1448375104018068, guid: 760b8eeb165af804dbf6ac2480cd5a41,
+    type: 3}

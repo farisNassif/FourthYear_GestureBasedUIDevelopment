@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4048595892630688}
   - component: {fileID: 58161556273064410}
-  - component: {fileID: 114383331575473740}
   - component: {fileID: 212870082002213654}
+  - component: {fileID: 6488683273869640350}
   m_Layer: 0
   m_Name: PR_BadBaloon
   m_TagString: Bubble
@@ -49,21 +49,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!114 &114383331575473740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448375104018068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a52426bc19da1d41a20a68134bbab02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mBubbleSprite: {fileID: 21300000, guid: fa6b84de61a118040b0f6ea5ff430bda, type: 3}
-  mPopSprite: {fileID: 21300000, guid: 7f5d45d9834c77d47b570bd4d1e2e39f, type: 3}
-  mBubbleManager: {fileID: 0}
 --- !u!212 &212870082002213654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,3 +99,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6488683273869640350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448375104018068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706a211e8d267f049818771c1e282c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mBubbleSprite: {fileID: 21300000, guid: fa6b84de61a118040b0f6ea5ff430bda, type: 3}
+  mPopSprite: {fileID: 21300000, guid: 7f5d45d9834c77d47b570bd4d1e2e39f, type: 3}
+  mBubbleManager: {fileID: 0}

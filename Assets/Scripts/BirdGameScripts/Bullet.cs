@@ -22,10 +22,10 @@ public class Bullet : MonoBehaviour
         Asteroid enemy = hitInfo.GetComponent<Asteroid>();
         if(enemy != null)
         {
+            Debug.Log("her");
             /* Destroy bullet and asteroid on collision */
             Destroy(gameObject);
             Destroy(enemy.gameObject);
-
             /* If Player kills an asteroid while at full health, give them another empty heart and fill it by 25% */
             if (PlayerStats.Instance.Health == PlayerStats.Instance.MaxHealth)
             {
@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
                 HealthBarHUDTester.Hurt(1f);
                 /* Fill the heart up by 25% */
                 HealthBarHUDTester.Heal(0.25f);
-            } else {
+            } else  {
                 /* Otherwise just heal them by 25% of a heart */
                 HealthBarHUDTester.Heal(0.25f);
             }
