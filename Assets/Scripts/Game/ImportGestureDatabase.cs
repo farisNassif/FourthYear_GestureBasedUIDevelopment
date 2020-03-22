@@ -197,7 +197,6 @@ public class ImportGestureDatabase : MonoBehaviour
                         PlayerMovement.flyingUp = false;      
                         Debug.Log("Hovering!");                 
                     }
-
                 }
             }
         }

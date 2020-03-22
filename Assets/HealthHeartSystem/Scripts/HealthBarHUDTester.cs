@@ -1,17 +1,13 @@
-﻿/*
- *  Author: ariel oliveira [o.arielg@gmail.com]
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealthBarHUDTester : MonoBehaviour
 {
-    public void AddHealth()
+    public static void AddHealth()
     {
         PlayerStats.Instance.AddHealth();
     }
 
-    public void Heal(float health)
+    public static void Heal(float health)
     {
         PlayerStats.Instance.Heal(health);
     }

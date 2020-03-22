@@ -8,7 +8,7 @@ public class ShootScript : MonoBehaviour
 {
     public Transform bullet;
     public GameObject bulletPrefab;
-    
+
     [HideInInspector]
 
     /* Player starts with full charge */
@@ -18,9 +18,15 @@ public class ShootScript : MonoBehaviour
     void Update()
     {
         /* Max the charge out at 100 */
-        if (currentCharge != 100)
+        if (currentCharge <= 100)
         {
             currentCharge = currentCharge + 0.7;
+
+            /* Making sure it doesn't overflow since it's a double */
+            if (currentCharge > 100)
+            {
+                currentCharge = 100;
+            }
         }
 
         /* Display charge in real time */
@@ -34,6 +40,13 @@ public class ShootScript : MonoBehaviour
             Debug.Log("Shoot");
         }
     }
+
+    /* If the bullet collides with something .. */
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log(col.gameObject.name);
+    }
+
 
     void Shoot()
     {

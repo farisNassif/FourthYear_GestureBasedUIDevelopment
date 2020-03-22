@@ -15,7 +15,7 @@ public class Asteroid : MonoBehaviour {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width*2, Screen.height, Camera.main.transform.position.z));
     }
 
-    // Update is called once per frame
+    /* If it goes out of bounds destroy it */
     void Update () {
         if(transform.position.x < screenBounds.x){
             Destroy(this.gameObject);
