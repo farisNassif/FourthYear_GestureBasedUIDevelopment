@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private float horiSpeed = 5f;
     private float vertSpeed = 0.7f;
 
+    /* After respawn become invunerable for x seconds */
+    private bool invincible = false;
+
     /* Text display for in game purposes, changes depending on gesture alerting the player */
     public Text statusOfFlying;
 
@@ -113,18 +116,25 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         /* If it was an asteroid .. */
-        if (col.gameObject.name == "Asteroid 2(Clone)")
+        if (col.gameObject.name == "Asteroid 2(Clone)" && invincible == false)
         {
             Debug.Log("Die"); // Test
             SoundManagerScript.BirdDieClip(); // Play death sound
 
             /* Decrement a life visually */
             HealthBarHUDTester.Hurt(1f);
-            /* Ehhh .. just run the game and you'll see what this does */
-           // Instantiate (player, player.transform.position = respawnPoint.transform.position, Quaternion.identity);
+            /* Replace the player back at the starting point, illusion of respawning */
             transform.position = respawnPoint.transform.position;
+            /* Become immune to damage for 3 seconds */     
+            StartCoroutine(InvunerableTimer());  
             
         }
+    }
 
+    IEnumerator InvunerableTimer()
+    {
+        invincible = true; 
+        yield return new WaitForSeconds(3);
+        invincible = false;
     }
 }
