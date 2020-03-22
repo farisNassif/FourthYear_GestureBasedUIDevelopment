@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bubble
   - Hand
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Bullet
   - 
   - 
   - 
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ignore Raycast
+    uniqueID: 1573407881
+    locked: 0
+  - name: Bullet
+    uniqueID: 1990773549
     locked: 0

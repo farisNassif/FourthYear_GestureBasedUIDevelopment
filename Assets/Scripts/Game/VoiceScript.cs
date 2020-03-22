@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 // Reference : https://www.youtube.com/watch?v=HwT6QyOA80E
 public class VoiceScript : MonoBehaviour
 {
+    public Transform bullet;
+    public GameObject bulletPrefab;
+
     KeywordRecognizer keywordRecognizer;
 
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
@@ -42,20 +45,10 @@ public class VoiceScript : MonoBehaviour
     // call fire
     void FireCalled()
     {
+        // create bullet if fire is said, rest is handled in bullet script
         Debug.Log("Fire called");
+        Instantiate(bulletPrefab, bullet.position, bullet.rotation);
 
-        // need to Instantiate or enable an existing object here 
-        // gameObject.SetActive(true);
-
-        // set velocity of object here or maybe in another script
-        // vel = 2.5f;
-
-        // collisions of object to be set here as well
-        /* if(gameObject.collision)
-        {
-            Destroy(gameObject);
-        }
-        */
     }
 
 }
