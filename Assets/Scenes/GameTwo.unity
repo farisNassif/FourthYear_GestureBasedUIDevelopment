@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717a10a810bbfb948963e69eee04ce9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7016218020150720560, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6, type: 3}
+  bullet: {fileID: 377183194}
   bulletPrefab: {fileID: 7016218020150720562, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6,
     type: 3}
 --- !u!1001 &1224895363
@@ -2760,7 +2760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1992124693673210542, guid: cfe2c4fca834fca44b327f5400fa3343,
     type: 3}
-  respawnTime: 0.5
+  respawnTime: 1
 --- !u!1 &2081262552
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class SumScore {
 	
     /* Add points to score */
     public static void Add (int pointsToAdd) {
-        Debug.Log(pointsToAdd + " points " + ((pointsToAdd > 0) ? "added" : "removed"));
+        // Debug.Log(pointsToAdd + " points " + ((pointsToAdd > 0) ? "added" : "removed"));
         /* Add points to current score */
         Score += pointsToAdd; 
         if (MgrSet()) {
@@ -58,7 +58,7 @@ public class SumScore {
     /* Checks score against high score and saves if higher */
     public static void SaveHighScore () {
         if (Score > HighScore) {
-            Debug.Log("New high score " + Score);
+            // Debug.Log("New high score " + Score);
             HighScore = Score;
             /* Store high score in player prefs 
             ** https://docs.unity3d.com/ScriptReference/PlayerPrefs.html */
@@ -71,7 +71,7 @@ public class SumScore {
 
     /* Reset high score and clear from player prefs */
     public static void ClearHighScore () {
-        Debug.Log("Deleting high score");
+        // Debug.Log("Deleting high score");
         PlayerPrefs.DeleteKey("sumHS");
         HighScore = 0;
         if (MgrSet())
