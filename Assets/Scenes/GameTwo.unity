@@ -1146,6 +1146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 873083016}
   - component: {fileID: 873083018}
+  - component: {fileID: 873083017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1169,6 +1170,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873083017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873083015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c042cc1a93cb9bb45993971cafeffb9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 377183194}
+  bulletPrefab: {fileID: 7016218020150720562, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6,
+    type: 3}
+  shootCharge: {fileID: 1172300578}
 --- !u!114 &873083018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,7 +2124,6 @@ GameObject:
   - component: {fileID: 1735556306}
   - component: {fileID: 1735556307}
   - component: {fileID: 1735556308}
-  - component: {fileID: 1735556305}
   m_Layer: 8
   m_Name: Bird_Idle1
   m_TagString: Untagged
@@ -2199,22 +2215,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1735556305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735556301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c042cc1a93cb9bb45993971cafeffb9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 7016218020150720560, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6, type: 3}
-  bulletPrefab: {fileID: 7016218020150720562, guid: 8cd6cfcbe9e670d4c867a6fdbaeae6f6,
-    type: 3}
-  shootCharge: {fileID: 1172300578}
 --- !u!50 &1735556306
 Rigidbody2D:
   serializedVersion: 4
