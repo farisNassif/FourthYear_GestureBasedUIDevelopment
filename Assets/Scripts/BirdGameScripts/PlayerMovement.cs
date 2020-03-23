@@ -28,10 +28,17 @@ public class PlayerMovement : MonoBehaviour
     public static bool flyingDown = false;
     public static bool hover = false;
 
+    public GameObject gameOver;
+
+    BirdGameMusic music;
+
     void Start()
     {
         /* On start, init the rigid body */
         myRigidbody = GetComponent<Rigidbody2D>();
+
+        // disable game over menu
+        gameOver.SetActive(false);
     }
 
     void Update()
@@ -128,6 +135,8 @@ public class PlayerMovement : MonoBehaviour
             if (PlayerStats.Instance.Health <= 0)
             {
                 Debug.Log("Game is over, 0 health!");
+                gameOver.SetActive(true);
+                Time.timeScale = 0f;
             }
 
             /* Replace the player back at the starting point, illusion of respawning */
