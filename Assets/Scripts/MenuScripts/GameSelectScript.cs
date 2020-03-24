@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Windows.Kinect;
 
-// Script for loading into game one
-
+/* Script for loading into games */
 public class GameSelectScript : MonoBehaviour
 {
+    public GameObject gameMenu;
+    public GameObject mainMenu;
     TimeManager soundManager;
 
-    // select game 
+    /* Select game */
     public void SelectGame()
     {
         SceneManager.LoadScene("MainScene");
@@ -19,7 +20,7 @@ public class GameSelectScript : MonoBehaviour
         TimeManager.playedMusic = false;
     }
 
-    // return to menu scene 
+    /* Return to menu scene */ 
     public void Return()
     {
         SceneManager.LoadScene("MenuScene");
@@ -45,10 +46,17 @@ public class GameSelectScript : MonoBehaviour
         */
     }
 
+    /* Play bird game */
     public void GameTwo()
     {
         SceneManager.LoadScene("GameTwo");
         Time.timeScale = 1f;
+    }
+
+    public void Back() 
+    {
+        gameMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
 }

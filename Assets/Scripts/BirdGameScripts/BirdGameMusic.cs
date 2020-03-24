@@ -12,6 +12,7 @@ public class BirdGameMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playedMusic = false;
         currentTime = startingTime;
     }
 
