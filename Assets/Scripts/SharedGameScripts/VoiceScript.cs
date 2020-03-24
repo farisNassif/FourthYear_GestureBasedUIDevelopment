@@ -31,6 +31,11 @@ public class VoiceScript : MonoBehaviour
             NoCalled();
         });
 
+        keywords.Add("yes", () =>
+        {
+            YesCalled();
+        });
+
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeyWordRecognizerOnPhraseRecognized;
         keywordRecognizer.Start();
@@ -63,6 +68,12 @@ public class VoiceScript : MonoBehaviour
     void NoCalled()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    void YesCalled()
+    {
+        SceneManager.LoadScene("GameTwo");
+        Time.timeScale = 1f;
     }
 
 }
