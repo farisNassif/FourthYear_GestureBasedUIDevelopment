@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BubbleManager : MonoBehaviour
 {
     public GameObject mBubblePrefab;
 
     public GameObject mBadBubblePrefab;
+    public Text handRecog;
 
     [HideInInspector]
     private List<Bubble> GoodBubbles = new List<Bubble>();
@@ -17,20 +18,32 @@ public class BubbleManager : MonoBehaviour
 
     private bool executedOnce = false;
 
+    private void Start()
+    {
+        /* Until hands are detected display the hands information message */
+        handRecog.gameObject.SetActive(true);
+    }
+    
     private void Awake()
     {
-        // Bounding values
+        /* Bounding values */
         mBottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.farClipPlane));
         mTopRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight / 2, Camera.main.farClipPlane));
     }
 
     private void Update() {
         /* If hands were recognized, GameManager is ready to start and if this wasn't already ran, run it */
-        if (executedOnce == false) {
+        if (executedOnce == false && Hand.handsRecognized == true) {
+            /* Set the hand text to false, since hands are now picked up */
+            handRecog.gameObject.SetActive(false);
+            /* Start spawning objects */
             StartCoroutine(CreateBubbles());
-            executedOnce = true; // To ensure multiple coroutines don't execute
+            /* To ensure multiple coroutines don't execute */
+            executedOnce = true; 
         }
     }
+
+    /* Used to control spawn area of baloons */
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

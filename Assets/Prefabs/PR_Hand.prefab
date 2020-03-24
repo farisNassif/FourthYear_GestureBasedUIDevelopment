@@ -165,3 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mHandMesh: {fileID: 4551246133346816}
+  handRecog: {fileID: 5820581361038616124, guid: 40173a694e789864997dbdf202b6b68c,
+    type: 3}

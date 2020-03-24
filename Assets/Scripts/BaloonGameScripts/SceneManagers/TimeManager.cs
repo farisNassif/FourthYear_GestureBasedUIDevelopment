@@ -30,51 +30,53 @@ public class TimeManager : MonoBehaviour
     {
         currentTime = startingTime;
         restartMenu.SetActive(false);
-
     }
 
     /* Update is called once per frame */
     void Update()
     {
-        PlayMusic();
-
-        /* Decrement by 1 second per second */
-        currentTime -= 1 * Time.deltaTime;
-
-        /* Change the colour of the timer to yellow when theres less than 20 seconds left */
-        if (currentTime >= 10 && currentTime < 20)
+        if (Hand.handsRecognized == true) 
         {
-            countdownTimer.color = Color.yellow;
-        }
+            PlayMusic();
 
-        /* Change the colour of the timer to red when theres less than 10 seconds left */
-        if (currentTime < 10)
-        {
-            countdownTimer.color = Color.red;
-        }
+            /* Decrement by 1 second per second */
+            currentTime -= 1 * Time.deltaTime;
 
-        /* Start a countdown when 7 seconds remain */
-        if (currentTime.ToString("0") == "7")
-        {
-            CountdownSound();
-        }
-        
-        /* Times up! Game over */
-        if (currentTime.ToString("0") == "0")
-        {
-            /* Ensure this is only executed ONCE */
-            if (!gameEnded)
+            /* Change the colour of the timer to yellow when theres less than 20 seconds left */
+            if (currentTime >= 10 && currentTime < 20)
             {
-                /* Stop the music and freeze the scene */
-                SoundManagerScript.Stop();
-                Time.timeScale = 0f; 
-                GameOver();
-                gameEnded = true;
+                countdownTimer.color = Color.yellow;
             }
-        }
 
-        /* Rounds it to a whole number */
-        countdownTimer.text = currentTime.ToString("0");
+            /* Change the colour of the timer to red when theres less than 10 seconds left */
+            if (currentTime < 10)
+            {
+                countdownTimer.color = Color.red;
+            }
+
+            /* Start a countdown when 7 seconds remain */
+            if (currentTime.ToString("0") == "7")
+            {
+                CountdownSound();
+            }
+            
+            /* Times up! Game over */
+            if (currentTime.ToString("0") == "0")
+            {
+                /* Ensure this is only executed ONCE */
+                if (!gameEnded)
+                {
+                    /* Stop the music and freeze the scene */
+                    SoundManagerScript.Stop();
+                    Time.timeScale = 0f; 
+                    GameOver();
+                    gameEnded = true;
+                }
+            }
+
+            /* Rounds it to a whole number */
+            countdownTimer.text = currentTime.ToString("0");
+        }
     }
 
     /* Method that handles playing the backgroud music */

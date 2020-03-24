@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Hand : MonoBehaviour
 {
     public Transform mHandMesh;
+
     [HideInInspector]
     public static bool handsRecognized = false;
 
     private void Update()
     {
         mHandMesh.position = Vector3.Lerp(mHandMesh.position, transform.position, Time.deltaTime * 15.0f);
+        /* Hands were picked up! Game can start */
         handsRecognized = true;
     }
 
@@ -35,7 +37,7 @@ public class Hand : MonoBehaviour
         }
         catch(System.NullReferenceException exception) 
         {
-            Debug.Log(exception);
+            Debug.Log("Exception caught! Ignore this " + exception);
         }
     }
 }
