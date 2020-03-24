@@ -134,6 +134,8 @@ public class PlayerMovement : MonoBehaviour
             /* No health left, game over! */
             if (PlayerStats.Instance.Health <= 0)
             {
+                SoundManagerScript.Stop();
+                SoundManagerScript.BirdGameOverClip();
                 Debug.Log("Game is over, 0 health!");
                 gameOver.SetActive(true);
                 Time.timeScale = 0f;
