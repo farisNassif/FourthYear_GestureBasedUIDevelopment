@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Script for handling Game Over menu sequence
 public class GameOver : MonoBehaviour
 {
 
-    BirdGameMusic music;
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        
+    }
 
     public void Restart()
     {

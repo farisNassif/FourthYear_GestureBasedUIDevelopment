@@ -67,7 +67,7 @@ public class TimeManager : MonoBehaviour
             {
                 /* Stop the music and freeze the scene */
                 SoundManagerScript.Stop();
-                //Time.timeScale = 0f; 
+                Time.timeScale = 0f; 
                 GameOver();
                 gameEnded = true;
             }

@@ -36,8 +36,9 @@ public class MainMenuScript : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    public void IsSelected()
+    public void Quit()
     {
-
+        Application.Quit();
+        Debug.Log("Quit Game");
     }
 }

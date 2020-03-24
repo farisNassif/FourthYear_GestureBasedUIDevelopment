@@ -26,6 +26,11 @@ public class VoiceScript : MonoBehaviour
             FireCalled();
         });
 
+        keywords.Add("no", () =>
+        {
+            NoCalled();
+        });
+
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeyWordRecognizerOnPhraseRecognized;
         keywordRecognizer.Start();
@@ -53,7 +58,11 @@ public class VoiceScript : MonoBehaviour
             ShootScript.currentCharge = 0;
         }
 
+    }
 
+    void NoCalled()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
 }
