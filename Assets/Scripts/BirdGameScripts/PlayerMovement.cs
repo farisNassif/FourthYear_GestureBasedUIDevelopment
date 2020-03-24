@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject gameOver;
 
-    BirdGameMusic music;
+    /* Text the player sees when they finish the level */
+    public Text gameOverScore;
 
     void Start()
     {
@@ -134,10 +135,15 @@ public class PlayerMovement : MonoBehaviour
             /* No health left, game over! */
             if (PlayerStats.Instance.Health <= 0)
             {
+                /* Stop sounds */
                 SoundManagerScript.Stop();
                 SoundManagerScript.BirdGameOverClip();
-                Debug.Log("Game is over, 0 health!");
+
+                /* */
+                SetGameOverScore();
+                /* Set the game over menu active */
                 gameOver.SetActive(true);
+                /* Freeze the scene */
                 Time.timeScale = 0f;
             }
 
@@ -155,5 +161,22 @@ public class PlayerMovement : MonoBehaviour
         invincible = true; 
         yield return new WaitForSeconds(3);
         invincible = false;
+    }
+
+    /* Message to the user after they finish the level */
+    public void SetGameOverScore() 
+    {
+        /* If they beat the old high score, make the message green */
+        if (SumScore.Score >= SumScore.HighScore)
+        {
+            gameOverScore.text = "Score - " + SumScore.Score + "\n New High Score!";
+            gameOverScore.color = Color.green;
+        } 
+        /* Otherwise change the message and make it red */
+        else if (SumScore.Score < SumScore.HighScore)
+        {
+            gameOverScore.text = "Score - " + SumScore.Score + "\n No new High Score :(";
+            gameOverScore.color = Color.red;
+        }       
     }
 }

@@ -941,8 +941,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 17.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -1.3, y: 15.1}
+  m_SizeDelta: {x: 288.37, y: 49.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276197670
 MonoBehaviour:
@@ -2558,13 +2558,14 @@ GameObject:
   - component: {fileID: 1405311002}
   - component: {fileID: 1405311004}
   - component: {fileID: 1405311003}
+  - component: {fileID: 1405311005}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1405311002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2623,6 +2624,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405311001}
   m_CullTransparentMesh: 0
+--- !u!114 &1405311005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405311001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea45f47044b9b449962a8e5a41947e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464938420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3210,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 1298881818}
   statusOfFlying: {fileID: 700894500}
   gameOver: {fileID: 1405311001}
+  gameOverScore: {fileID: 276197670}
 --- !u!114 &1828837570 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11493390, guid: 69002a90feac05341ba09f7949d7b90e,
