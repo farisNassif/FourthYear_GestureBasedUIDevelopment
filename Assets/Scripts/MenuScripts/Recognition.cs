@@ -55,9 +55,14 @@ public class Recognition : MonoBehaviour
             ScoreCalled();
         });
 
-        keywords.Add("clear", () =>
+        keywords.Add("bird", () =>
         {
-            ClearCalled();
+            BirdCalled();
+        });
+
+        keywords.Add("balloon", () =>
+        {
+            BalloonCalled();
         });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
@@ -122,10 +127,17 @@ public class Recognition : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    void ClearCalled()
+    void BirdCalled()
     {
         SumScore.ClearHighScore();
         BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
+    }
+
+    void BalloonCalled()
+    {
+        Debug.Log("Balloon called");
+
+        // do stuff here
     }
 
 }
