@@ -16,14 +16,20 @@ public class HighScores : MonoBehaviour
     void Start()
     {
         mainMenu.SetActive(false);
-        BaloonScore.text = "Baloon Game Score: [1 gorillion]";
-        BirdScore.text = "Score: [" + SumScore.HighScore + "]";
+        BaloonScore.text = "Baloon Game - High Score: [TODO]";
+        BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
     }
 
     public void Back()
     {
         scoresMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void ClearBirdScore()
+    {
+        SumScore.ClearHighScore();   
+        BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
     }
 
 }

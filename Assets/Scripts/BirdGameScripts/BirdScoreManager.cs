@@ -35,7 +35,7 @@ public class BirdScoreManager : MonoBehaviour {
 
 
     /* Clear the high score */
-    public void ClearHighScore () {
+    public void ClearHighScore() {
         SumScore.ClearHighScore();
     }
 }
