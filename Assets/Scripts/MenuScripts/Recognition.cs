@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Windows.Speech;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Script used for voice recognition
 // Reference : https://www.youtube.com/watch?v=HwT6QyOA80E
@@ -14,7 +15,10 @@ public class Recognition : MonoBehaviour
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
     public GameObject gameMenu;
-    public GameObject mainMenu;
+    public GameObject mainMenu; 
+    public GameObject scoreMenu;
+
+    public Text BirdScore;
 
     // Add any extra words here for actions
     void Start()
@@ -44,6 +48,16 @@ public class Recognition : MonoBehaviour
         keywords.Add("back", () =>
         {
             BackCalled();
+        });
+
+        keywords.Add("score", () =>
+        {
+            ScoreCalled();
+        });
+
+        keywords.Add("clear", () =>
+        {
+            ClearCalled();
         });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
@@ -98,6 +112,20 @@ public class Recognition : MonoBehaviour
         // this will go back to main menu if in game select menu
         gameMenu.SetActive(false);
         mainMenu.SetActive(true);
+        scoreMenu.SetActive(false);
+
+    }
+
+    void ScoreCalled()
+    {
+        scoreMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    void ClearCalled()
+    {
+        SumScore.ClearHighScore();
+        BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
     }
 
 }
