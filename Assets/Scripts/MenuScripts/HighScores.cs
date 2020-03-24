@@ -12,7 +12,17 @@ public class HighScores : MonoBehaviour
     public Text BaloonScore;
     public Text BirdScore;
 
-
+    void Update()
+    {
+        /* Swipe was detected .. */
+        if (GameSelectScript.recentlySwiped == true) {
+            /* Go back in the menu */
+            Back();
+            Debug.Log("Swipe, go back!");
+            /* Make this false so it can be called again */
+            GameSelectScript.recentlySwiped = false;
+        }
+    }
     void Start()
     {
         mainMenu.SetActive(false);

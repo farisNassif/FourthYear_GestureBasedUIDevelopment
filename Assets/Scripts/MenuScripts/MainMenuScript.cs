@@ -7,16 +7,23 @@ using UnityEngine.UI;
 /* This Script is for managing the main menu upon loading the application
 ** References : https://www.youtube.com/watch?v=zc8ac_qUXQY&t=583s (Brackeys tutorial on scene management)
 ** https://answers.unity.com/questions/1072521/set-gui-text-activeinactive-by-clicking-on-a-butto-1.html (Set GUI element to true or false with booleans) */
-
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject gameMenu;
     public GameObject mainMenu;
     public GameObject scoresMenu;
+    public static bool recentlySwiped = false;
 
+    void Update()
+    {
+        if (MainMenuScript.recentlySwiped == true) {
+            Debug.Log("Swiped");
+            MainMenuScript.recentlySwiped = false;
+        }
+    }
     void Start()
     {
-        gameMenu.SetActive(false);
+        //gameMenu.SetActive(false);
     }
 
     /* Select Game function */
@@ -36,9 +43,8 @@ public class MainMenuScript : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-    public void Quit()
+    public void IsSelected()
     {
-        Application.Quit();
-        Debug.Log("Quit Game");
+
     }
 }

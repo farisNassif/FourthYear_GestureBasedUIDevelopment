@@ -3,7 +3,7 @@ using UnityEngine;
 using Microsoft.Kinect.VisualGestureBuilder;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
-
+using UnityEngine.SceneManagement;
 /* Class that builds the path to the gesture Database, loads in and saves those pre recorded gestures then listens to see if one was picked up.
 ** The code in this class was adapted with the help from the book 'Beginning Microsoft Kinect for Windows SDK 2.0' (Page 240-245)
 */
@@ -16,6 +16,7 @@ public class ImportGestureDatabase : MonoBehaviour
     Windows.Kinect.BodyFrameReader bodyFrameReader;
     /* Kinect Ref */
     Windows.Kinect.KinectSensor kinect;
+    
     /* Gesture object which will store the gestures after they're loaded from the Database */
     Gesture Flap, Swipe, TurnLeft, TurnRight, Hover; 
     PlayerMovement PM = new PlayerMovement();
@@ -26,6 +27,8 @@ public class ImportGestureDatabase : MonoBehaviour
         "TurnRight.gbd",
         "Hover.gbd",
     };
+    /* So swipe isn't spammed */
+    public bool recentlySwiped = false;
 
     /* On start/play, make sure the kinect is open and read in all saved gestures from the .gbd files */
     void Start()
@@ -166,9 +169,14 @@ public class ImportGestureDatabase : MonoBehaviour
                     /* If it's 98% sure a swipe was just made */
                     if (SwipeResult.Confidence >= 0.98)
                     {
-                        Debug.Log("Swiped!");
-                        /* Do menu stuff here .. */
-
+                        /* If Player is in the menu scene and hadn't recently swiped .. */
+                        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("MenuScene") && GameSelectScript.recentlySwiped == false)
+                        {
+                            /* Reference GameSelectScript object = true, will now go back in the menu */
+                            GameSelectScript.recentlySwiped = true;
+                            /* Chill for 3 seconds */
+                            WaitForThreeSeconds();
+                        }
                     }
 
                     /* The following 3 if statements manages the flying status of the bird in Playermovement.
@@ -213,9 +221,14 @@ public class ImportGestureDatabase : MonoBehaviour
         vgbFrameReader.IsPaused = false;
     }
 
-    /* Update isn't really needed in this class, leaving just incase unity goes mad */
-    void Update()
+    /* IEnumerator that delays for 3 second.
+    ** This can be handy when we only really need 1 gesture to execute in a given second.
+    */
+    private IEnumerator WaitForThreeSeconds()
     {
-        
+        /* Pause the frame reader, wait 1 second and unpause it */
+        vgbFrameReader.IsPaused = true;
+        yield return new WaitForSeconds(3);
+        vgbFrameReader.IsPaused = false;
     }
 }

@@ -9,7 +9,21 @@ public class GameSelectScript : MonoBehaviour
 {
     public GameObject gameMenu;
     public GameObject mainMenu;
-    TimeManager soundManager;
+
+    /* If a swipe is detected go back in the menu */
+    public static bool recentlySwiped = false;
+
+    void Update() 
+    {
+        /* Swipe was detected .. */
+        if (GameSelectScript.recentlySwiped == true) {
+            /* Go back in the menu */
+            Back();
+            Debug.Log("Swipe, go back!");
+            /* Make this false so it can be called again */
+            GameSelectScript.recentlySwiped = false;
+        }
+    }
 
     /* Select game */
     public void SelectGame()

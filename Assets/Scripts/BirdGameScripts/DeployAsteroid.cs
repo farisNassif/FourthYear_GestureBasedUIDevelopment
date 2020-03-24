@@ -21,7 +21,7 @@ public class DeployAsteroid : MonoBehaviour
     }
     private void spawnEnemy() {
         GameObject a = Instantiate(asteroidPrefab) as GameObject;
-        a.transform.position = new Vector3(screenBounds.x * -5, Random.Range(-screenBounds.y, screenBounds.y));
+        a.transform.position = new Vector3(screenBounds.x * -7, Random.Range(-screenBounds.y, screenBounds.y));
     }
     
     IEnumerator asteroidWave(){
