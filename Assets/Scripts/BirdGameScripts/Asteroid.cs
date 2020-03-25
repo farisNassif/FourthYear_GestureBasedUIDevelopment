@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Asteroid enemy object class */
 public class Asteroid : MonoBehaviour {
+    /* Speed changeable in inspector */
     public float speed = 35.0f;
+    /* Asteroid rigidbody */
     private Rigidbody2D rb;
+    /* Screen bounds, so it spawns within a certain range */
     private Vector2 screenBounds;
 
 
-    // Use this for initialization
+    /* Used for initialization */
     void Start () {
         rb = this.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed, 0);

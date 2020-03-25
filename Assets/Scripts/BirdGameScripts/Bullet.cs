@@ -38,10 +38,14 @@ public class Bullet : MonoBehaviour
                 HealthBarHUDTester.Hurt(1f);
                 /* Fill the heart up by 25% */
                 HealthBarHUDTester.Heal(0.25f);
-            } else  {
+            } else  
+            {
                 /* Otherwise just heal them by 25% of a heart */
                 HealthBarHUDTester.Heal(0.25f);
             }
+
+            /* Asteroid destroyed sound clip */
+            SoundManagerScript.AsteroidDestroyedClip();
         }
     }
 }

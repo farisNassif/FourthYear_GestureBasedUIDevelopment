@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap, BirdDie, BirdGameMusic, BirdShoot, BirdGameOver;
+    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap, BirdDie, BirdGameMusic, BirdShoot, AsteroidDestroyed, BirdGameOver;
     static AudioSource AudioSrc;
     private float soundVolume = 1f;
     public static System.Random r = new System.Random();
@@ -27,6 +27,7 @@ public class SoundManagerScript : MonoBehaviour
         BirdDie = Resources.Load<AudioClip>("BirdDie");
         BirdShoot = Resources.Load<AudioClip>("BirdShoot");
         BirdGameOver = Resources.Load<AudioClip>("BirdGameOver");
+        AsteroidDestroyed = Resources.Load<AudioClip>("AsteroidDestroyed");
 
         AudioSrc = GetComponent<AudioSource> ();
     }
@@ -98,6 +99,11 @@ public class SoundManagerScript : MonoBehaviour
         }
     }
 
+    /* Sound for when an asteroid is destroyed */
+    public static void AsteroidDestroyedClip()
+    {
+        AudioSrc.PlayOneShot(AsteroidDestroyed);
+    }
     /* Stops the audiosource (mute) */
     public static void Stop()
     {

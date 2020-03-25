@@ -41,13 +41,6 @@ public class ShootScript : MonoBehaviour
         }
     }
 
-    /* If the bullet collides with something .. */
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        Debug.Log(col.gameObject.name);
-    }
-
-
     void Shoot()
     {
         /* Create bullet prefab */
