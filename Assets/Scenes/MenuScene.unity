@@ -1252,7 +1252,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2138735423}
-        m_MethodName: 
+        m_MethodName: ClearBalloonScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3310,6 +3310,7 @@ MonoBehaviour:
   scoresMenu: {fileID: 2138735419}
   BaloonScore: {fileID: 1559022248}
   BirdScore: {fileID: 1896756742}
+  balloonHighScore: 0
 --- !u!1 &2142934856
 GameObject:
   m_ObjectHideFlags: 0
