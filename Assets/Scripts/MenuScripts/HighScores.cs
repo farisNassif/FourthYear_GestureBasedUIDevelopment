@@ -37,7 +37,7 @@ public class HighScores : MonoBehaviour
         /* Need to get this manually unlike the bird game score */
         GetBalloonHighScore();
         /* Set the text fields based on stored high scores (in playerprefs) */
-        BaloonScore.text = "Baloon Game - High Score: " + balloonHighScore;
+        BaloonScore.text = "Balloon Game - High Score: " + balloonHighScore;
         BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
     }
 
@@ -67,6 +67,6 @@ public class HighScores : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("balloonHS");
         /* Once it was cleared show the new score (Should always be 0 after resetting) */
-        BaloonScore.text = "Baloon Game - High Score: 0";
+        BaloonScore.text = "Balloon Game - High Score: 0";
     }
 }

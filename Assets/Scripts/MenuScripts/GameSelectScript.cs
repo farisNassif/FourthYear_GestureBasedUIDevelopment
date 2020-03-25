@@ -9,6 +9,8 @@ public class GameSelectScript : MonoBehaviour
 {
     public GameObject gameMenu;
     public GameObject mainMenu;
+    public GameObject helpOne;
+    public GameObject helpTwo;
 
     /* If a swipe is detected go back in the menu */
     public static bool recentlySwiped = false;
@@ -72,5 +74,30 @@ public class GameSelectScript : MonoBehaviour
         gameMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
+    public void BackHelpOne()
+    {
+        gameMenu.SetActive(true);
+        helpOne.SetActive(false);
+    }
+
+    public void BackHelpTwo()
+    {
+        gameMenu.SetActive(true);
+        helpTwo.SetActive(false);
+    }
+
+    public void ToHelpOne()
+    {
+        helpOne.SetActive(true);
+        gameMenu.SetActive(false);
+    }
+
+    public void ToHelpTwo()
+    {
+        helpTwo.SetActive(true);
+        gameMenu.SetActive(false);
+    }
+
 
 }
