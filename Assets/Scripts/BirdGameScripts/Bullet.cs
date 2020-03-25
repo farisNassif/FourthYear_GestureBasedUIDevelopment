@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script for the Bullet prefab
-// Reference : https://www.youtube.com/watch?v=wkKsl1Mfp5M&t=211s
-
+/* Script for the Bullet prefab
+** Reference : https://www.youtube.com/watch?v=wkKsl1Mfp5M&t=211s */
 public class Bullet : MonoBehaviour
 {
+    /* Speed of the bullet */
     public float speed = 20f;
+    /* Bullet Rigidbody */
     public Rigidbody2D rb;
 
     void Start()
     {
-        // speed of bullet
+        /* Speed of bullet */
         rb.velocity = transform.right * speed;
     }
 
-
+    /* Whenever the bullet triggers an object .. */
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        /* Init asteroid object */
         Asteroid enemy = hitInfo.GetComponent<Asteroid>();
+
+        /* If it actually hit something .. */
         if(enemy != null)
         {
-            Debug.Log("her");
             /* Destroy bullet and asteroid on collision */
             Destroy(gameObject);
             Destroy(enemy.gameObject);

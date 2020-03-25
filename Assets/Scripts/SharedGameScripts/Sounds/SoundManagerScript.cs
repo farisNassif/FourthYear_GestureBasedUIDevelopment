@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap, BirdDie, BirdGameMusic, BirdGameOver;
+    public static AudioClip CountdownSound, GameMusic, Pop1, Pop2, Pop3, Flap, BirdDie, BirdGameMusic, BirdShoot, BirdGameOver;
     static AudioSource AudioSrc;
     private float soundVolume = 1f;
     public static System.Random r = new System.Random();
@@ -25,6 +25,7 @@ public class SoundManagerScript : MonoBehaviour
         Pop3 = Resources.Load<AudioClip>("Pop3");
         Flap = Resources.Load<AudioClip>("Flap");
         BirdDie = Resources.Load<AudioClip>("BirdDie");
+        BirdShoot = Resources.Load<AudioClip>("BirdShoot");
         BirdGameOver = Resources.Load<AudioClip>("BirdGameOver");
 
         AudioSrc = GetComponent<AudioSource> ();
@@ -66,6 +67,12 @@ public class SoundManagerScript : MonoBehaviour
         AudioSrc.PlayOneShot(BirdGameMusic);
     }
 
+    /* Sound for bird shooting gun */
+    public static void BirdShootClip()
+    {
+        AudioSrc.PlayOneShot(BirdShoot);
+    }
+    /* Inception horn sound for bird game over */
     public static void BirdGameOverClip() 
     {
         AudioSrc.PlayOneShot(BirdGameOver);
@@ -91,6 +98,7 @@ public class SoundManagerScript : MonoBehaviour
         }
     }
 
+    /* Stops the audiosource (mute) */
     public static void Stop()
     {
         AudioSrc.Stop();

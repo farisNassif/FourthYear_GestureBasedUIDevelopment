@@ -34,7 +34,7 @@ public class ShootScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && currentCharge == 100)
         {
-            // shoot function for keyboard
+            /* Shoot function for keyboard */
             Shoot();
             currentCharge = 0;
             Debug.Log("Shoot");
@@ -50,7 +50,9 @@ public class ShootScript : MonoBehaviour
 
     void Shoot()
     {
-        // create bullet prefab
+        /* Create bullet prefab */
         Instantiate(bulletPrefab, bullet.position, bullet.rotation);
+        /* Play shoot sound */
+        SoundManagerScript.BirdShootClip();
     }
 }
