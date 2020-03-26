@@ -1,4 +1,4 @@
-<h3 align="center">A Unity3D Project incorporating the Kinect v2, the Visual Gesture Builder Database, Multiplayer elements & voice controlled UI traversal </h3>
+<h3 align="center">A Unity Application developed using the Kinect V2 that incorporates the unique use of various Gestures and Speech Patterns into two separate games linked together by a gesture-controlled UI</h3>
 
 ## Project Details
 
@@ -10,18 +10,20 @@
 | **Author** | [Faris Nassif](https://github.com/farisNassif) & [Alex Cherry](https://github.com/moecherry99) |
 | **Lecturer** | Damien Costello |
 
-### Requirements for Cloning
+### Requirements for Running Locally
 * [Kinect SDK](https://www.microsoft.com/en-us/download/details.aspx?id=44561)
 * [Unity 2019.3.0b5](https://unity3d.com/unity/beta/2019.3.0b5) (May still work with some other versions)
+* Kinect v2 with a functional Microphone
+<br>
 
-### Requirements for Playing
-* Have a kinect
+`<i>The Application is still functional without the above hardware requirements via the Executeable</i>`
 
-## Summary
-The project consists of two games, <b><i>BaloonGameName</i></b> & <b><i>FlapBirdGameName</i></b> which can be traversed via a voice controlled UI (<i>Can also be navigated traditionally</i>).
-
-#### BaloonGameName
-The best baloon game this side of galway
+### Libraries and Development Tools
+* [Kinect Studio](https://developer.microsoft.com/en-us/windows/kinect/)
+* [Visual Gesture Builder](https://kinect.github.io/tutorial/lab12/index.html)
+* [Unity Speech Recognition API](https://docs.unity3d.com/ScriptReference/Windows.Speech.PhraseRecognitionSystem.html)
+* [Kinect for Windows v2 API](https://docs.microsoft.com/en-us/previous-versions/windows/kinect/dn758675(v=ieb.10))
+* [Visual Gesture Builder API](https://docs.microsoft.com/en-us/previous-versions/windows/kinect/dn763323(v=ieb.10))
 
 #### FlapBirdGameName
 It's NOT flappy bird
