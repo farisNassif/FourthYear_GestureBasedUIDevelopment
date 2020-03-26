@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
     float currentTime = 0f;
-    float startingTime = 30f;
+    float startingTime = 3f;
 
 
     [HideInInspector]
