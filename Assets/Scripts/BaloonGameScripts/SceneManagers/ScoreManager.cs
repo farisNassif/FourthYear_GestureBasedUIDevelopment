@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     /* Text display for in game purposes */
     public Text scoreText;
     public Text highScoreText;
+    public Text endingScoreText;
     /* If the current player set a new high score */
     public bool setNewHighScore = false;
 
@@ -63,6 +64,7 @@ public class ScoreManager : MonoBehaviour
         /* Set the text fields to reflect scores */
         highScoreText.text = "High Score: [" + highScore.ToString() + "]";
         scoreText.text = "Score: [" + score.ToString() + "]";
+        endingScoreText.text = "You scored " + score.ToString() + ", nice job!";
     }
 
     /* Basically if current score is greater than current high score, score = new high score */

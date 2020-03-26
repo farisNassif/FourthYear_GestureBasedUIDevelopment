@@ -66,19 +66,13 @@ public class GameSelectScript : MonoBehaviour
     {
         Debug.Log("Restart game");
 
-        /* DON'T UNCOMMENT THIS IT WILL BREAK YOUR COMPUTER */
-        //SceneManager.LoadScene("MainScene");
-        //Time.timeScale = 1f;
+        SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1f;
 
-        /*TimeManager.playedSound = false;
+        TimeManager.playedSound = false;
         TimeManager.playedMusic = false;
         SoundManagerScript.GameMusic_1();
-
-        if (TimeManager.currentTime.ToString("0") == "7")
-        {
-            SoundManagerScript.CountdownClip();
-        }
-        */
+        
     }
 
     /* Play bird game */

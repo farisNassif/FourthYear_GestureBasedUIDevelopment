@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour
     //float startingTime = 30f;
 
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
-    float currentTime = 0f;
+    public float currentTime = 0f;
     float startingTime = 3f;
 
 

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 13205723}
   - component: {fileID: 13205725}
   - component: {fileID: 13205724}
+  - component: {fileID: 13205726}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -198,6 +199,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13205722}
   m_CullTransparentMesh: 0
+--- !u!114 &13205726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13205722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c03001f0a8d614fafc976390a8a422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  highScore: 0
+  scoreText: {fileID: 2144795323}
+  highScoreText: {fileID: 1283478552}
+  endingScoreText: {fileID: 13205724}
+  setNewHighScore: 0
 --- !u!1 &32765949
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartMenu: {fileID: 1462355140}
+  currentTime: 0
   gameEnded: 0
   countdownTimer: {fileID: 937134751}
 --- !u!1 &937134750
@@ -801,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartMenu: {fileID: 1462355140}
+  currentTime: 0
   gameEnded: 0
   countdownTimer: {fileID: 937134751}
 --- !u!1 &1037061788
@@ -1262,7 +1283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -720.35, y: 454.4}
+  m_AnchoredPosition: {x: -861, y: 496}
   m_SizeDelta: {x: 525.5, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283478552
@@ -1313,6 +1334,7 @@ MonoBehaviour:
   highScore: 0
   scoreText: {fileID: 2144795323}
   highScoreText: {fileID: 1283478552}
+  endingScoreText: {fileID: 13205724}
   setNewHighScore: 0
 --- !u!222 &1283478554
 CanvasRenderer:
@@ -1561,6 +1583,7 @@ MonoBehaviour:
   highScore: 0
   scoreText: {fileID: 937134751}
   highScoreText: {fileID: 0}
+  endingScoreText: {fileID: 0}
   setNewHighScore: 0
 --- !u!4 &1453340762
 Transform:
@@ -1609,7 +1632,6 @@ RectTransform:
   - {fileID: 1283405152}
   - {fileID: 13205723}
   - {fileID: 32765950}
-  - {fileID: 2013690799}
   m_Father: {fileID: 1765694289}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1668,6 +1690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMenu: {fileID: 0}
   mainMenu: {fileID: 0}
+  helpOne: {fileID: 0}
+  helpTwo: {fileID: 0}
 --- !u!1 &1592185466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,101 +2049,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949459781}
   m_CullTransparentMesh: 0
---- !u!1 &2013690798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2013690799}
-  - component: {fileID: 2013690802}
-  - component: {fileID: 2013690801}
-  - component: {fileID: 2013690800}
-  m_Layer: 5
-  m_Name: MenuScoreTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2013690799
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013690798}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9973669, y: 0.9973669, z: 0.9973669}
-  m_Children: []
-  m_Father: {fileID: 1462355141}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 243.4, y: 142}
-  m_SizeDelta: {x: 880.2, y: 114.8}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2013690800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013690798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c03001f0a8d614fafc976390a8a422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  highScore: 0
-  scoreText: {fileID: 2013690801}
-  highScoreText: {fileID: 1283478552}
-  setNewHighScore: 0
---- !u!114 &2013690801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013690798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 54
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 54
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Score: '
---- !u!222 &2013690802
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013690798}
-  m_CullTransparentMesh: 0
 --- !u!1 &2056267500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -787, y: 347}
+  m_AnchoredPosition: {x: -929, y: 391}
   m_SizeDelta: {x: 392.2, y: 114.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144795323
@@ -2367,4 +2296,5 @@ MonoBehaviour:
   highScore: 0
   scoreText: {fileID: 2144795323}
   highScoreText: {fileID: 1283478552}
+  endingScoreText: {fileID: 13205724}
   setNewHighScore: 0
