@@ -67,12 +67,7 @@ public class GameSelectScript : MonoBehaviour
         Debug.Log("Restart game");
 
         SceneManager.LoadScene("MainScene");
-        Time.timeScale = 1f;
 
-        TimeManager.playedSound = false;
-        TimeManager.playedMusic = false;
-        SoundManagerScript.GameMusic_1();
-        
     }
 
     /* Play bird game */

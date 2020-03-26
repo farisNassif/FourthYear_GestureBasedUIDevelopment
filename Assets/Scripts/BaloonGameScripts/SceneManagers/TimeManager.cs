@@ -30,6 +30,11 @@ public class TimeManager : MonoBehaviour
     {
         currentTime = startingTime;
         restartMenu.SetActive(false);
+        Time.timeScale = 1f;
+        playedSound = false;
+        playedMusic = false;
+        //SoundManagerScript.GameMusic_1();
+
     }
 
     /* Update is called once per frame */

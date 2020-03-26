@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 SoundManagerScript.Stop();
                 SoundManagerScript.BirdGameOverClip();
 
-                /* */
+                /* Set the ending score */
                 SetGameOverScore();
                 /* Set the game over menu active */
                 gameOver.SetActive(true);
