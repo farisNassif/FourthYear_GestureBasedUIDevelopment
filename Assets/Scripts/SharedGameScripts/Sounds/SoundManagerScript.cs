@@ -29,6 +29,7 @@ public class SoundManagerScript : MonoBehaviour
         BirdGameOver = Resources.Load<AudioClip>("BirdGameOver");
         AsteroidDestroyed = Resources.Load<AudioClip>("AsteroidDestroyed");
 
+        /* Audio Source reference to actually play the sound/music */
         AudioSrc = GetComponent<AudioSource> ();
     }
 
@@ -104,6 +105,7 @@ public class SoundManagerScript : MonoBehaviour
     {
         AudioSrc.PlayOneShot(AsteroidDestroyed);
     }
+
     /* Stops the audiosource (mute) */
     public static void Stop()
     {

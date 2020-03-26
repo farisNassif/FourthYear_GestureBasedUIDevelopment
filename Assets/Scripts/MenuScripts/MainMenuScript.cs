@@ -13,6 +13,9 @@ public class MainMenuScript : MonoBehaviour
     public GameObject gameMenu;
     public GameObject mainMenu;
     public GameObject scoresMenu;
+
+    /* Bool to control swipe navigation, 3 second swipe cooldown
+    ** See ImportGestureDatabase.cs for more*/
     public static bool recentlySwiped = false;
 
     void Update()
@@ -26,9 +29,7 @@ public class MainMenuScript : MonoBehaviour
     /* Select Game function */
     public void SelectGame()
     {
-        // Loads main scene (will be changed when updating menus)
-        // SceneManager.LoadScene("MainScene");
-
+        /* Loads the game menu and makes the initial menu inactive */
         gameMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
@@ -38,10 +39,5 @@ public class MainMenuScript : MonoBehaviour
     {
         scoresMenu.SetActive(true);
         mainMenu.SetActive(false);
-    }
-
-    public void IsSelected()
-    {
-
     }
 }

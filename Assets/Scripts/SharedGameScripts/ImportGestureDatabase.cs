@@ -4,6 +4,7 @@ using Microsoft.Kinect.VisualGestureBuilder;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
 using UnityEngine.SceneManagement;
+
 /* Class that builds the path to the gesture Database, loads in and saves those pre recorded gestures then listens to see if one was picked up.
 ** The code in this class was adapted with the help from the book 'Beginning Microsoft Kinect for Windows SDK 2.0' (Page 240-245)
 */

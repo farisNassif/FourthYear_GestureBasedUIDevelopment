@@ -5,18 +5,20 @@ using UnityEngine;
 /* Script that pretty much just handles and loops the music for the bird game */
 public class BirdGameMusic : MonoBehaviour
 {
+    /* Start will always be 0 seconds so it can be compared against startingTime */
     float currentTime = 0f;
-    float startingTime = 37f; // Duration of music clip
+    /* Duration of music clip */
+    float startingTime = 37f; 
     public static bool playedMusic = false;
 
-    // Start is called before the first frame update
+    /* Executed on start */
     void Start()
     {
         playedMusic = false;
         currentTime = startingTime;
     }
 
-    // Update is called once per frame
+    /* Update is called each frame */
     void Update()
     {
         PlayMusic();
@@ -28,7 +30,6 @@ public class BirdGameMusic : MonoBehaviour
             playedMusic = false;
             currentTime = startingTime; // Reset back to start
         }
-
     }
 
     /* Method that handles playing the backgroud music */

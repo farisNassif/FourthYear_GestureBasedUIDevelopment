@@ -2,22 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/* At the start we had bubbles instead of balloons, hence the Bubble/BubbleManager classes
+** Manager for the balloons & spawning of balloons + initialization */
 public class BubbleManager : MonoBehaviour
 {
+    /* Objects required for initialization */
     public GameObject mBubblePrefab;
-
     public GameObject mBadBubblePrefab;
+    /* Text alerting user if the hands were recognized yet or not */
     public Text handRecog;
 
     [HideInInspector]
+
+    /* List for good and bad balloons */
     private List<Bubble> GoodBubbles = new List<Bubble>();
     private List<Bubble> BadBubbles = new List<Bubble>();
 
+    /* Used to help get the params of the screen for spawning */
     private Vector2 mBottomLeft = Vector2.zero;
     private Vector2 mTopRight = Vector2.zero;
 
+    /* So it only executes once */
     private bool executedOnce = false;
 
+    /* Called once at the start */
     private void Start()
     {
         /* Until hands are detected display the hands information message */
@@ -31,6 +40,7 @@ public class BubbleManager : MonoBehaviour
         mTopRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight / 2, Camera.main.farClipPlane));
     }
 
+    /* Called each frame */
     private void Update() {
         /* If hands were recognized, GameManager is ready to start and if this wasn't already ran, run it */
         if (executedOnce == false && Hand.handsRecognized == true) {
@@ -51,6 +61,7 @@ public class BubbleManager : MonoBehaviour
         Gizmos.DrawSphere(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, Camera.main.farClipPlane)), 0.5f);
     }
 
+    /* Get the plane position for spawning */
     public Vector3 GetPlanePosition()
     {
         /* Random Position */
@@ -60,6 +71,7 @@ public class BubbleManager : MonoBehaviour
         return new Vector3(targetX, targetY, 0);
     }
 
+    /* Enumerator for spawning balloons */
     public IEnumerator CreateBubbles()
     {
         while (GoodBubbles.Count < 100 && BadBubbles.Count < 100)

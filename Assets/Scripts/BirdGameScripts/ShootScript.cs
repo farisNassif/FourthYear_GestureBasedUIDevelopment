@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /* Class that manages the bird shooting */
 public class ShootScript : MonoBehaviour
 {
+    /* Inspector variables that initialize the bullet/prefab */
     public Transform bullet;
     public GameObject bulletPrefab;
 
