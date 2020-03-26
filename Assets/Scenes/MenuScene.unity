@@ -502,7 +502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.8, y: 45.5}
+  m_AnchoredPosition: {x: 48.2, y: 53.7}
   m_SizeDelta: {x: 173.26, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &105259309
@@ -733,7 +733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 555.5, y: 67.5}
+  m_AnchoredPosition: {x: 555.51, y: 110.2}
   m_SizeDelta: {x: 197.2, y: 67.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &210964639
@@ -2233,8 +2233,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902545710}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 337.2, y: -11.5, z: 0}
-  m_LocalScale: {x: 46.582256, y: 31.734575, z: 5.490601}
+  m_LocalPosition: {x: 335.9, y: 24.97, z: 0}
+  m_LocalScale: {x: 46.582256, y: 36.98665, z: 5.490601}
   m_Children: []
   m_Father: {fileID: 560536404}
   m_RootOrder: 1
@@ -2278,7 +2278,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2704d128967db0f4482b4adc5ba0095c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2bcc6f122dbf694e9d7865a19b4eb80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3163,7 +3163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 555.5, y: 241}
+  m_AnchoredPosition: {x: 555.52, y: 282.4}
   m_SizeDelta: {x: 197.19, y: 67.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264428518
@@ -3306,7 +3306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.9, y: -31.2}
+  m_AnchoredPosition: {x: 56.7, y: -22.4}
   m_SizeDelta: {x: 146.58, y: 32.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297758491
@@ -3385,8 +3385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23.49, y: -95.09}
-  m_SizeDelta: {x: 354.98, y: 370.19}
+  m_AnchoredPosition: {x: 23.49, y: -103.75}
+  m_SizeDelta: {x: 354.98, y: 387.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309558723
 MonoBehaviour:
@@ -3419,21 +3419,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The game won''t begin until your hands have been detected.
-
-
-    Once
-    Detected you have 30 seconds to move your hands and pop as many Green Balloons
-    as possible to increase your score.
-
-
-    But beware the Red Balloons, avoid
-    them or face a score decuction.
-
-
-    Have fun and try to beat the High Scores!
-
-'
+  m_Text: "The game won't begin until your hands have been detected.\n\nOnce Detected
+    you have 30 seconds to move your hands and pop as many Green Balloons as possible
+    to increase your score.\n\nBut beware the Red Balloons, avoid them or face a
+    score decuction.\n\nPlay solo or with a friend. Have fun and try to beat the
+    High Scores! \n"
 --- !u!222 &1309558724
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4202,7 +4192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1502894779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4342,7 +4332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 555.51, y: -111.4}
+  m_AnchoredPosition: {x: 555.53, y: -63.4}
   m_SizeDelta: {x: 197.2, y: 67.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535776714
@@ -4564,8 +4554,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671351651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 337.04004, y: -193.8, z: 0}
-  m_LocalScale: {x: 46.582256, y: 31.734575, z: 5.490601}
+  m_LocalPosition: {x: 336.31, y: -154.64, z: 0}
+  m_LocalScale: {x: 58.41415, y: 33.013477, z: 5.490601}
   m_Children: []
   m_Father: {fileID: 560536404}
   m_RootOrder: 2
@@ -4609,7 +4599,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2704d128967db0f4482b4adc5ba0095c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37253821e3e0c604aba634cb8e7c51c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5494,8 +5484,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117533248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 337.04004, y: 171, z: 0}
-  m_LocalScale: {x: 46.582256, y: 31.734575, z: 5.490601}
+  m_LocalPosition: {x: 335.7, y: 196.52, z: 0}
+  m_LocalScale: {x: 53.33203, y: 31.73458, z: 5.490601}
   m_Children: []
   m_Father: {fileID: 560536404}
   m_RootOrder: 0
@@ -5539,7 +5529,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2704d128967db0f4482b4adc5ba0095c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a6aca21dc722e949ac047f65fb837d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -38,7 +38,6 @@ public class ShootScript : MonoBehaviour
             /* Shoot function for keyboard */
             Shoot();
             currentCharge = 0;
-            Debug.Log("Shoot");
         }
     }
 

@@ -47,15 +47,14 @@ public class ImportGestureDatabase : MonoBehaviour
             /* Depending on loop will change gesturePaths to Swipe/TurnLeft/TurnRight/Hover to load in individually */
             string databasePath = System.IO.Path.Combine(Application.streamingAssetsPath, gesturePaths[i]);
 
-            /* Database path assignment, for each gesture, add the gesture (Load in Swipe) */
+            /* Database path assignment, for each gesture, add the gesture */
             using (VisualGestureBuilderDatabase vgbDb = VisualGestureBuilderDatabase.Create(databasePath))
             {
                 foreach (var gesture in vgbDb.AvailableGestures)
                 {
-                    Debug.Log(vgbFrameSource.Gestures.Count); // Should be 0
+                    /* Add the gesture that was just loaded in to the frame source for use later */
                     vgbFrameSource.AddGesture(gesture);
-                    Debug.Log(vgbFrameSource.Gestures.Count); // Should now be 1??
-
+                    
                     /* Get all the gesture names and assign them to local gesture variables */
                     if(gesture.Name.Equals("Swipe"))
                     {                           

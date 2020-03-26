@@ -8,33 +8,31 @@ using UnityEngine.SceneManagement;
 /* Class that manages the timer for the Baloon bursting game, also handles certain sounds */
 public class TimeManager : MonoBehaviour
 {
-
+    /* Restart menu object to interact with after game finishes */
     public GameObject restartMenu;
 
-    //public static float currentTime = 0f;   
-    //float startingTime = 30f;
-
     /* Time variables, starting at 0 pretty much and game ends after 30 seconds */
-    public float currentTime = 0f;
-    float startingTime = 3f;
-
-
+    float currentTime = 0f;
+    float startingTime = 30f;
+    
     [HideInInspector]
+    /* Booleans to control game behaviours after restart */
     public bool gameEnded = false;
     public static bool playedMusic = false;
     public static bool playedSound = false;
+    /* Countdown timer object */
     public Text countdownTimer;
 
     /* When the game begins, set the Current time to 30 */
     void Start()
     {
         currentTime = startingTime;
+        /* Deactivate menu */
         restartMenu.SetActive(false);
+        /* If this was just being restarted, the following needs to be executed */ 
         Time.timeScale = 1f;
         playedSound = false;
         playedMusic = false;
-        //SoundManagerScript.GameMusic_1();
-
     }
 
     /* Update is called once per frame */

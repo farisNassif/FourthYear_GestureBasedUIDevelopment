@@ -14,7 +14,6 @@ public class SumScore {
 	
     /* Add points to score */
     public static void Add (int pointsToAdd) {
-        // Debug.Log(pointsToAdd + " points " + ((pointsToAdd > 0) ? "added" : "removed"));
         /* Add points to current score */
         Score += pointsToAdd; 
         if (MgrSet()) {
@@ -33,7 +32,6 @@ public class SumScore {
 
     /* Sets Score to 0 and updates manager */
     public static void Reset () {
-        Debug.Log("Reset score");
         Score = 0;
         if(MgrSet()) {
             mgr.Updated();
@@ -47,7 +45,7 @@ public class SumScore {
             /* Set instance reference */
             mgr = SumScoreManager.instance; 
             if (mgr == null) {
-                /* Throw error message if we can't link */
+                /* Throw error message if can't link */
                 Debug.LogError("<b>SumScoreManager.instance</b> cannot be found. Make sure object is active in inspector.");
                 return false;
             }
