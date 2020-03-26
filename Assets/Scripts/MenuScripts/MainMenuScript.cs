@@ -9,6 +9,7 @@ using UnityEngine.UI;
 ** https://answers.unity.com/questions/1072521/set-gui-text-activeinactive-by-clicking-on-a-butto-1.html (Set GUI element to true or false with booleans) */
 public class MainMenuScript : MonoBehaviour
 {
+    /* Menu objects required for navigation */
     public GameObject gameMenu;
     public GameObject mainMenu;
     public GameObject scoresMenu;
@@ -20,10 +21,6 @@ public class MainMenuScript : MonoBehaviour
             Debug.Log("Swiped");
             MainMenuScript.recentlySwiped = false;
         }
-    }
-    void Start()
-    {
-        //gameMenu.SetActive(false);
     }
 
     /* Select Game function */

@@ -25,25 +25,23 @@ public class GameSelectScript : MonoBehaviour
             if (gameMenu.activeSelf)
             {
                 /* Go back in the menu */
-                //Back();
-            }
+                Back();
+            } 
             /* If the user is on the help page for the first game .. */
-            if (helpOne.activeSelf)
+            else if (helpOne.activeSelf)
             {
                 /* Back to the game menu */
-                //BackHelpOne();
-                Debug.Log("in helpone swipe");
+                BackHelpOne();
             }
             /* If the user is on the help page for the second game .. */
-            if (helpTwo.activeSelf)
+            else if (helpTwo.activeSelf)
             {
                 /* Back to the game menu */
-                //BackHelpTwo();
-                Debug.Log("in helptwo swipe");
+                BackHelpTwo();
             }
-            
             /* Make this false so it can be called again 
-            ** Cooldown period of 3 seconds - See ImportGestureDatabse.cs */
+            ** Cooldown period of 3 seconds - See ImportGestureDatabse.cs 
+            ** This may be unnecessary due to the enumerator in the above script that controls the bool, here just incase! */
             GameSelectScript.recentlySwiped = false;
         }
     }

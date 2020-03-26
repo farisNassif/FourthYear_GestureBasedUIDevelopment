@@ -172,10 +172,10 @@ public class ImportGestureDatabase : MonoBehaviour
                         /* If Player is in the menu scene and hadn't recently swiped .. */
                         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("MenuScene") && GameSelectScript.recentlySwiped == false)
                         {
-                            /* Reference GameSelectScript object = true, will now go back in the menu */
-                            GameSelectScript.recentlySwiped = true;
-                            /* Chill for 3 seconds */
-                            WaitForThreeSeconds();
+                            /* Make swipe True and chill for 3 seconds 
+                            ** Reference GameSelectScript object = true, will now go back in the menu */
+                            StartCoroutine(WaitForThreeSeconds());
+                           
                         }
                     }
 
@@ -226,9 +226,12 @@ public class ImportGestureDatabase : MonoBehaviour
     */
     private IEnumerator WaitForThreeSeconds()
     {
-        /* Pause the frame reader, wait 1 second and unpause it */
+        /* Reference GameSelectScript object = true, will now go back in the menu */
+        GameSelectScript.recentlySwiped = true;
+        /* Pause the frame reader, wait 3 seconds and unpause it */
         vgbFrameReader.IsPaused = true;
         yield return new WaitForSeconds(3);
         vgbFrameReader.IsPaused = false;
+        GameSelectScript.recentlySwiped = false;
     }
 }
