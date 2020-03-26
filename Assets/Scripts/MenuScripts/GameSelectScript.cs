@@ -7,6 +7,7 @@ using Windows.Kinect;
 /* Script for loading into games */
 public class GameSelectScript : MonoBehaviour
 {
+    /* All the menu objects that need to be interacted with */
     public GameObject gameMenu;
     public GameObject mainMenu;
     public GameObject helpOne;
@@ -17,12 +18,32 @@ public class GameSelectScript : MonoBehaviour
 
     void Update() 
     {
-        /* Swipe was detected .. */
+        /* Swipe was detected .. 
+        ** See ImportGestureDatabase.cs for gesture importing & handling */
         if (GameSelectScript.recentlySwiped == true) {
-            /* Go back in the menu */
-            Back();
-            Debug.Log("Swipe, go back!");
-            /* Make this false so it can be called again */
+            /* If the game menu is the active game object .. */
+            if (gameMenu.activeSelf)
+            {
+                /* Go back in the menu */
+                //Back();
+            }
+            /* If the user is on the help page for the first game .. */
+            if (helpOne.activeSelf)
+            {
+                /* Back to the game menu */
+                //BackHelpOne();
+                Debug.Log("in helpone swipe");
+            }
+            /* If the user is on the help page for the second game .. */
+            if (helpTwo.activeSelf)
+            {
+                /* Back to the game menu */
+                //BackHelpTwo();
+                Debug.Log("in helptwo swipe");
+            }
+            
+            /* Make this false so it can be called again 
+            ** Cooldown period of 3 seconds - See ImportGestureDatabse.cs */
             GameSelectScript.recentlySwiped = false;
         }
     }
@@ -69,35 +90,38 @@ public class GameSelectScript : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    /* Back to the main menu */
     public void Back() 
     {
         gameMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 
+    /* If the user is in game one's help menu, go back */
     public void BackHelpOne()
     {
         gameMenu.SetActive(true);
         helpOne.SetActive(false);
     }
 
+    /* If the user is in game two's help menu, go back */
     public void BackHelpTwo()
     {
         gameMenu.SetActive(true);
         helpTwo.SetActive(false);
     }
 
+    /* If the user wants to go to the instructions page for game one */
     public void ToHelpOne()
     {
         helpOne.SetActive(true);
         gameMenu.SetActive(false);
     }
 
+    /* If the user wants to go to the instructions page for game two */
     public void ToHelpTwo()
     {
         helpTwo.SetActive(true);
         gameMenu.SetActive(false);
     }
-
-
 }
