@@ -88,7 +88,7 @@ The below gestures incorporated into our project went through multiple builds an
 
 To see how they were implemented and loaded in from their respective .gbd files see [ImportGestureDatabase.cs](Assets/Scripts/SharedGameScripts/ImportGestureDatabase.cs).
 
-### Swipe
+<h3 align="center">Swipe</h3>
 <p align="center">
   <img src ="Documentation/ReadmeImages/SwipeGif.gif" width="200" height="300">
   <br>
@@ -116,6 +116,24 @@ To see how they were implemented and loaded in from their respective .gbd files 
   Continious Flying gesture that when performed by the player caused the bird to descend.
 </p>
 
+## Conclusion
+While we had previous experience with Unity neither of us had any gesture-based development experience. Setting up the Kinect v2 along with all its pre-required development components was one of the biggest humps of the project to get over but once over it and development began we found that incorporating gestures, voice recognition and features of the Kinect into our project while challenging at the start was a lot more practical than we thought it'd be. 
+
+One thing we did find was that there wasn't a whole lot of resources online when it came to the Visual Gesture Builder and how to incorporate it into applications. Luckily after scouring Stackoverflow threads we did find some that helped us begin developing our gestures [1] [2]. Creating the .gbd gesture files took a large chunk of time as it involved recording both best case/worst case scenario clips to feed to each individual gesture build before implementing them into our project to test their accuracy and responsiveness.
+
+If we were to change anything one of the big things would be to include a couple more discrete gestures. One we did consider adding was a clapping gesture that would pause the game, alas time wasn't on our side, as mentioned building and training gestures does take a good chunk of time. 
+
+Looking at the scope of the project we're very happy with where we finished especially considering the recent Covid-19 outbreak resulting in both group members being unable to meet, share and test the application together, meaning one of us not posessing a Kinect  and having major components of the application essentially be a black-box.
+
+Overall it was actually a good bit of fun. We feel we made good design choices and that we were practical when it came to our choice of gestures and how to incorporate them. In the future it doesn't seem far out to develop personal projects with tools we used in the development of this project and experiment further with them. One we both considered messing around with was an Open-CV / Kinect v2 machine learning project that incorporated the Visual Gesture Builder that continiously trained gestures since it does take a long time to manually train them to an acceptable standard.
+
 ### Refs and readme images - TODO
-[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%20Microsoft%20Kinect%20for%20Windows%20SDK%202.0.pdf)<br>
+[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%20Microsoft%20Kinect%20for%20Windows%20SDK%202.0.pdf)
+<br>
+[2] https://channel9.msdn.com/Blogs/k4wdev/Custom-Gestures-End-to-End-with-Kinect-and-Visual-Gesture-Builder 
+<br>
+[3] https://channel9.msdn.com/Blogs/k4wdev/Custom-Gestures-End-to-End-with-Kinect-and-Visual-Gesture-Builder-part-2-
+<br>
+[4] https://www.youtube.com/watch?v=6EkQA3GakFI&list=PLmc6GPFDyfw_Pouy2uRxVrEWFj4N1UOOp
+<br>
 TODO - Add other refs
