@@ -167,7 +167,7 @@ public class ImportGestureDatabase : MonoBehaviour
                     /* ----- Listening, or detecting to see if the user made a gesture like a loaded one from the Database .. ----- */
 
                     /* If it's 98% sure a swipe was just made */
-                    if (SwipeResult.Confidence >= 0.98)
+                    if (SwipeResult.Confidence >= 0.95)
                     {
                         /* If Player is in the menu scene and hadn't recently swiped .. */
                         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("MenuScene") && GameSelectScript.recentlySwiped == false)
@@ -200,7 +200,7 @@ public class ImportGestureDatabase : MonoBehaviour
                         Debug.Log("Turning Right(Down)!");
                         Debug.Log("Right conf: " + TurnRightResult.Confidence);
                     }
-                    else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence && HoverResult.Confidence > TurnLeftResult.Confidence)
+                    else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence && HoverResult.Confidence > TurnRightResult.Confidence)
                     {
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;

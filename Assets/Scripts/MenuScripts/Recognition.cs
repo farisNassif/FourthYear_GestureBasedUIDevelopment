@@ -117,12 +117,14 @@ public class Recognition : MonoBehaviour
     {
         // this will load into the scene one if "one" or "game one" is said (both are recognised)
         SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1f;
     }
 
     void TwoCalled()
     {
         // this will load into the scene one if "one" or "game one" is said (both are recognised)
         SceneManager.LoadScene("GameTwo");
+        Time.timeScale = 1f;
     }
 
     void BackCalled()
@@ -133,7 +135,6 @@ public class Recognition : MonoBehaviour
         scoreMenu.SetActive(false);
         helpOne.SetActive(false);
         helpTwo.SetActive(false);
-        
     }
 
     void ScoreCalled()
@@ -171,5 +172,4 @@ public class Recognition : MonoBehaviour
         gameMenu.SetActive(false);
        
     }
-
 }
