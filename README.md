@@ -97,20 +97,23 @@ The below gestures incorporated into our project went through multiple builds an
 ### Turn Right / Fly Up
 <p align="center">
   <img src ="Documentation/ReadmeImages/TurnRight.png" width="200" height="300">
-   Continious Flying gesture that when performed by the player caused the Bird to ascend.
+  <br>
+  Continious Flying gesture that when performed by the player caused the Bird to ascend.
 </p>
 
 ### Hover
 <p align="center">
   <img src ="Documentation/ReadmeImages/Hover.png" width="200" height="300">
+  <br>
   Continious Flying gesture that when performed by the player caused the Bird to hover on the spot.
 </p>
 
 ### Turn Left / Fly Down
 <p align="center">
   <img src ="Documentation/ReadmeImages/TurnLeft.png" width="200" height="300">
+  <br>
   Continious Flying gesture that when performed by the player caused the bird to descend.
 </p>
 
 ### Refs and readme images - TODO
-[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Beginning%Microsoft%Kinect%for%Windows%SDK%2.0.pdf)
+[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%Microsoft%Kinect%for%Windows%SDK%2.0.pdf)
