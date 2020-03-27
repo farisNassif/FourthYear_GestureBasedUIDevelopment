@@ -86,6 +86,8 @@ We also implemented a shooting mechanic but since the players hands would be occ
 ## Gestures Identified
 The below gestures incorporated into our project went through multiple builds and training sessions to ensure the highest accuracy so the flow of the game would be as fluid as possible. 
 
+To see how they were implemented and loaded in from their respective .gbd files see [ImportGestureDatabase.cs](Assets/Scripts/SharedGameScripts/ImportGestureDatabase.cs).
+
 ### Swipe
 <p align="center">
   <img src ="Documentation/ReadmeImages/SwipeGif.gif" width="200" height="300">
@@ -116,4 +118,4 @@ The below gestures incorporated into our project went through multiple builds an
 </p>
 
 ### Refs and readme images - TODO
-[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%Microsoft%Kinect%for%Windows%SDK%2.0.pdf)
+[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%20Microsoft%20Kinect%20for%20Windows%20SDK%202.0.pdf)
