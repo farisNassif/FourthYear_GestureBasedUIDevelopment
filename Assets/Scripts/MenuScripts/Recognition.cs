@@ -17,8 +17,11 @@ public class Recognition : MonoBehaviour
     public GameObject gameMenu;
     public GameObject mainMenu; 
     public GameObject scoreMenu;
+    public GameObject helpOne;
+    public GameObject helpTwo;
 
     public Text BirdScore;
+    public Text BaloonScore;
 
     // Add any extra words here for actions
     void Start()
@@ -63,6 +66,16 @@ public class Recognition : MonoBehaviour
         keywords.Add("balloon", () =>
         {
             BalloonCalled();
+        });
+
+        keywords.Add("help", () =>
+        {
+            BalloonHelpCalled();
+        });
+
+        keywords.Add("assist", () =>
+        {
+            BirdHelpCalled();
         });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
@@ -118,7 +131,9 @@ public class Recognition : MonoBehaviour
         gameMenu.SetActive(false);
         mainMenu.SetActive(true);
         scoreMenu.SetActive(false);
-
+        helpOne.SetActive(false);
+        helpTwo.SetActive(false);
+        
     }
 
     void ScoreCalled()
@@ -129,15 +144,32 @@ public class Recognition : MonoBehaviour
 
     void BirdCalled()
     {
+        Debug.Log("Bird called");
         SumScore.ClearHighScore();
-        BirdScore.text = "Bird Game - High Score: " + SumScore.HighScore;
+        BirdScore.text = "Game Two - High Score: " + SumScore.HighScore;
     }
 
     void BalloonCalled()
     {
         Debug.Log("Balloon called");
+        PlayerPrefs.DeleteKey("balloonHS");
+        BaloonScore.text = "Game One - High Score: 0";
+    }
 
-        // do stuff here
+    void BalloonHelpCalled()
+    {
+        Debug.Log("Balloon Help called");
+        helpOne.SetActive(true);
+        gameMenu.SetActive(false);
+        
+    }
+
+    void BirdHelpCalled()
+    {
+        Debug.Log("Bird Help called");
+        helpTwo.SetActive(true);
+        gameMenu.SetActive(false);
+       
     }
 
 }

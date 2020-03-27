@@ -1483,7 +1483,10 @@ MonoBehaviour:
   gameMenu: {fileID: 319166493}
   mainMenu: {fileID: 690922596}
   scoreMenu: {fileID: 2138735419}
+  helpOne: {fileID: 771882250}
+  helpTwo: {fileID: 1502894778}
   BirdScore: {fileID: 1896756742}
+  BaloonScore: {fileID: 1559022248}
 --- !u!4 &530438310
 Transform:
   m_ObjectHideFlags: 0
@@ -4977,7 +4980,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Help
+  m_Text: Assist
 --- !u!222 &1864078676
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -18,4 +18,10 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
+
+    public void RestartGameOne()
+    {
+        SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1f;
+    }
 }
