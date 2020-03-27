@@ -95,22 +95,21 @@ To see how they were implemented and loaded in from their respective .gbd files 
   Simple but effective swipe gesture, easy for the user to perform and since it was solely used to assist with UI traversal both left     and right-handed swipes could be registered.
 </p>
 
-
-### Turn Right / Fly Up
+<h3 align="center">Turn Right / Fly Up</h3>
 <p align="center">
   <img src ="Documentation/ReadmeImages/TurnRight.png" width="200" height="300">
   <br>
   Continious Flying gesture that when performed by the player caused the Bird to ascend.
 </p>
 
-### Hover
+<h3 align="center">Hover</h3>
 <p align="center">
   <img src ="Documentation/ReadmeImages/Hover.png" width="200" height="300">
   <br>
-  Continious Flying gesture that when performed by the player caused the Bird to hover on the spot.
+  <i>Continious Flying gesture that when performed by the player caused the Bird to hover on the spot.
 </p>
 
-### Turn Left / Fly Down
+<h3 align="center">Turn Left / Fly Down</h3>
 <p align="center">
   <img src ="Documentation/ReadmeImages/TurnLeft.png" width="200" height="300">
   <br>
@@ -118,4 +117,5 @@ To see how they were implemented and loaded in from their respective .gbd files 
 </p>
 
 ### Refs and readme images - TODO
-[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%20Microsoft%20Kinect%20for%20Windows%20SDK%202.0.pdf)
+[1] [Beginning Microsoft Kinect for Windows SDK 2.0: Motion and Depth, Pages 241-244](Documentation/ReadmeImages/Beginning%20Microsoft%20Kinect%20for%20Windows%20SDK%202.0.pdf)<br>
+TODO - Add other refs
