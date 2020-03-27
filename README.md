@@ -106,14 +106,14 @@ To see how they were implemented and loaded in from their respective .gbd files 
 <p align="center">
   <img src ="Documentation/ReadmeImages/Hover.png" width="200" height="300">
   <br>
-  <i>Continious Flying gesture that when performed by the player caused the Bird to hover on the spot.
+  <i>Continious Flying gesture that when performed by the player caused the Bird to hover on the spot.</i>
 </p>
 
 <h3 align="center">Turn Left / Fly Down</h3>
 <p align="center">
   <img src ="Documentation/ReadmeImages/TurnLeft.png" width="200" height="300">
   <br>
-  Continious Flying gesture that when performed by the player caused the bird to descend.
+  <i>Continious Flying gesture that when performed by the player caused the bird to descend.</i>
 </p>
 
 ## Conclusion
