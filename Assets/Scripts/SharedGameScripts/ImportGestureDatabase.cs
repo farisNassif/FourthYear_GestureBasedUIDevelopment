@@ -151,8 +151,7 @@ public class ImportGestureDatabase : MonoBehaviour
                     /* Gesture result declaration */
                     DiscreteGestureResult SwipeResult;
                     /* The following three are continious but VS gives out when I declare them as so.
-                    ** It doesn't make a difference though it still works as intended.
-                    */
+                    ** It doesn't make a difference though it still works as intended. */
                     DiscreteGestureResult TurnLeftResult, TurnRightResult, HoverResult;
                     
                     /* ----- Compare the frame against the gestures -----*/
@@ -167,7 +166,7 @@ public class ImportGestureDatabase : MonoBehaviour
                     /* ----- Listening, or detecting to see if the user made a gesture like a loaded one from the Database .. ----- */
 
                     /* If it's 98% sure a swipe was just made */
-                    if (SwipeResult.Confidence >= 0.95)
+                    if (SwipeResult.Confidence >= .75)
                     {
                         /* If Player is in the menu scene and hadn't recently swiped .. */
                         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName ("MenuScene") && GameSelectScript.recentlySwiped == false)
@@ -189,24 +188,19 @@ public class ImportGestureDatabase : MonoBehaviour
                         PlayerMovement.flyingUp = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.hover = false;  
-                        Debug.Log("Turning Left(Up)!");
-                        Debug.Log("Left conf: " + TurnLeftResult.Confidence);
                     }
                     else if (TurnRightResult.Confidence > 0 && TurnRightResult.Confidence > TurnLeftResult.Confidence)
                     {
                         PlayerMovement.flyingDown = true;
                         PlayerMovement.flyingUp = false;
                         PlayerMovement.hover = false;
-                        Debug.Log("Turning Right(Down)!");
-                        Debug.Log("Right conf: " + TurnRightResult.Confidence);
                     }
-                    else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence && HoverResult.Confidence > TurnRightResult.Confidence)
+                    else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence 
+                            && HoverResult.Confidence > TurnLeftResult.Confidence)
                     {
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;
-                        PlayerMovement.flyingUp = false;      
-                        Debug.Log("Hovering!");   
-                        Debug.Log("Hover conf: " + HoverResult.Confidence);              
+                        PlayerMovement.flyingUp = false;         
                     }
                 }
             }

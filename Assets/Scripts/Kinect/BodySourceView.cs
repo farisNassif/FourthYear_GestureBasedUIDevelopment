@@ -89,7 +89,6 @@ public class BodySourceView : MonoBehaviour
             /* Parent to body */
             newJoint.transform.parent = body.transform;
         }
-
         return body;
     }
 
