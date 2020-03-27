@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1992124693673210542, guid: cfe2c4fca834fca44b327f5400fa3343,
     type: 3}
-  respawnTime: 2
+  respawnTime: 1
 --- !u!1 &2081262552
 GameObject:
   m_ObjectHideFlags: 0

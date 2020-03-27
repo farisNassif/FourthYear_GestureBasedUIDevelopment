@@ -83,18 +83,17 @@ public class PlayerMovement : MonoBehaviour
     */
     IEnumerator Fly()
     {
-        double X = 0.5;
+        double X = 0;
         double timePassed = 0;
 
         /* Execute the while for x seconds */
-        while (timePassed < X)
-        {
+
             if(PlayerMovement.flyingUp == true)
             {
                 /* Output message for the user of the birds status */
                 statusOfFlying.text = "Flying Status: [Ascending]";
                 /* Move the bird up */
-                HandleMovement(0f, 1);   
+                HandleMovement(0f, 1f);   
                 
             } 
             if(PlayerMovement.flyingDown == true)
@@ -102,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 /* Output message for the user of the birds status */
                 statusOfFlying.text = "Flying Status: [Descending]";
                 /* Move the bird down */
-                HandleMovement(0f, -1);   
+                HandleMovement(0f, -1f);   
             }
             if(PlayerMovement.hover == true)
             {
@@ -116,8 +115,8 @@ public class PlayerMovement : MonoBehaviour
             timePassed += Time.deltaTime;
     
             /* When the while makes its last iteration, set flying to false, user has to flap to make this execute again */
-            yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false && PlayerMovement.hover == true;
-        }  
+            yield return PlayerMovement.flyingDown = false && PlayerMovement.flyingUp == false && PlayerMovement.hover == false;
+        
     }
 
     /* If the bird collides with something .. */

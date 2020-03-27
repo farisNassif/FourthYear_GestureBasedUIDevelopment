@@ -184,26 +184,29 @@ public class ImportGestureDatabase : MonoBehaviour
                     ** as long as the user is performing the real time continious gesture.
                     ** The flying gestures were trained on both ideal and worst case scenario data/videos to ensure maximum accuracy.
                     */
-                    if (TurnLeftResult.Confidence > 0.2)
+                    if (TurnLeftResult.Confidence > 0 && TurnLeftResult.Confidence > TurnRightResult.Confidence)
                     {
                         PlayerMovement.flyingUp = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.hover = false;  
                         Debug.Log("Turning Left(Up)!");
+                        Debug.Log("Left conf: " + TurnLeftResult.Confidence);
                     }
-                    else if (TurnRightResult.Confidence > 0.2)
+                    else if (TurnRightResult.Confidence > 0 && TurnRightResult.Confidence > TurnLeftResult.Confidence)
                     {
                         PlayerMovement.flyingDown = true;
                         PlayerMovement.flyingUp = false;
                         PlayerMovement.hover = false;
                         Debug.Log("Turning Right(Down)!");
+                        Debug.Log("Right conf: " + TurnRightResult.Confidence);
                     }
-                    else if(HoverResult.Confidence > 0.1)
+                    else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence && HoverResult.Confidence > TurnLeftResult.Confidence)
                     {
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.flyingUp = false;      
-                        Debug.Log("Hovering!");                 
+                        Debug.Log("Hovering!");   
+                        Debug.Log("Hover conf: " + HoverResult.Confidence);              
                     }
                 }
             }
