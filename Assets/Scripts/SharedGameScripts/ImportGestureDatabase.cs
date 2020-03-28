@@ -165,7 +165,7 @@ public class ImportGestureDatabase : MonoBehaviour
 
                     /* ----- Listening, or detecting to see if the user made a gesture like a loaded one from the Database .. ----- */
 
-                    /* If it's 98% sure a swipe was just made */
+                    /* If it's 75% sure a swipe was just made */
                     if (SwipeResult.Confidence >= .75)
                     {
                         /* If Player is in the menu scene and hadn't recently swiped .. */
@@ -182,6 +182,9 @@ public class ImportGestureDatabase : MonoBehaviour
                     ** Only one condition can be true at one given time, allowing for smooth navigation of the bird
                     ** as long as the user is performing the real time continious gesture.
                     ** The flying gestures were trained on both ideal and worst case scenario data/videos to ensure maximum accuracy.
+					** The reason for not requiring 90%+ accuracy for these to execute is because, while we could do that after testing
+					** we found since they were thouroughly tested it should always be accurate between frames, declaring the gesture input
+					** like this allowed for fluid transition between any three flying states, rather than a choppy transition
                     */
                     if (TurnLeftResult.Confidence > 0 && TurnLeftResult.Confidence > TurnRightResult.Confidence)
                     {
@@ -219,7 +222,7 @@ public class ImportGestureDatabase : MonoBehaviour
     }
 
     /* IEnumerator that delays for 3 second.
-    ** This can be handy when we only really need 1 gesture to execute in a given second.
+    ** This can be handy when we only really need 1 gesture to execute in a period of three seconds.
     */
     private IEnumerator WaitForThreeSeconds()
     {
