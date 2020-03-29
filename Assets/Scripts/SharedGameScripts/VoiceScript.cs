@@ -66,6 +66,7 @@ public class VoiceScript : MonoBehaviour
         /* If the player has a full shoot charge bar .. */
         if (ShootScript.currentCharge==100)
         {
+            SoundManagerScript.BirdShootClip();
             /* Create bullet if fire is said, rest is handled in bullet script */
             Instantiate(bulletPrefab, bullet.position, bullet.rotation);
             /* Reset the charge back to 0 */

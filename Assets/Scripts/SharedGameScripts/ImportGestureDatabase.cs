@@ -201,6 +201,9 @@ public class ImportGestureDatabase : MonoBehaviour
                     else if(HoverResult.Confidence > 0 && HoverResult.Confidence > TurnLeftResult.Confidence 
                             && HoverResult.Confidence > TurnLeftResult.Confidence)
                     {
+                        Debug.Log(TurnLeftResult.Confidence);
+                        Debug.Log(TurnRightResult.Confidence);
+                        Debug.Log("Hov " + HoverResult.Confidence);
                         PlayerMovement.hover = true;
                         PlayerMovement.flyingDown = false;
                         PlayerMovement.flyingUp = false;         
