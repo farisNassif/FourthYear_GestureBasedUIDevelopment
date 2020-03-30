@@ -41,6 +41,13 @@ public class Recognition : MonoBehaviour
             SelectCalled();
         });
 
+        /* Add 'quit' keyword to the keywords dictionary */
+        keywords.Add("quit", () =>
+        {
+            /* Fire off the method */
+            QuitCalled();
+        });
+
         /* Add 'one' keyword to the keywords dictionary */
         keywords.Add("one", () =>
         {
@@ -97,13 +104,6 @@ public class Recognition : MonoBehaviour
             BirdHelpCalled();
         });
 
-        /* Don't ask, it made it a lot more accurate */
-        keywords.Add("a cyst", () =>
-        {
-            /* Fire off the method */
-            BirdHelpCalled();
-        });
-
         /* New KeywordRecognizer object and passing all the keys (words) */
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         /* When a phrase was recognized, pop off a new keywordRecognizer */
@@ -129,6 +129,13 @@ public class Recognition : MonoBehaviour
         /* Deactivate main menu and bring player to the game select menu */
         gameMenu.SetActive(true);
         mainMenu.SetActive(false);
+    }
+
+    /* When 'One' was picked up */
+    void QuitCalled() 
+    {
+        /* Terminate the Application */
+        Application.Quit();
     }
 
     /* When 'One' was picked up */

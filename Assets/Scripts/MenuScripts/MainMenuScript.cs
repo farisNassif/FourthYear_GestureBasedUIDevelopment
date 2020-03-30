@@ -40,4 +40,10 @@ public class MainMenuScript : MonoBehaviour
         scoresMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
+
+    /* Quit the game! */
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
