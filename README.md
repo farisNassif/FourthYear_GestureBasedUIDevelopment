@@ -4,7 +4,7 @@
 
 |Details  |    |
 | --- | --- |
-| **Project**  | [Project Spec](https://learnonline.gmit.ie/pluginfile.php/185571/mod_resource/content/0/Gesture%20Based%20UI%20Project.pdf) 
+| **Project**  | [Project Spec](https://learnonline.gmit.ie/pluginfile.php/201854/mod_resource/content/0/Updated%20Gesture%20Based%20UI%20Project.pdf)
 | **Module** |  Gesture Based UI Development |
 | **Course** | BSc (Hons) in Software Development
 | **Video** | [Demonstration](https://www.youtube.com/watch?v=vY8-LXUtT7A)
